@@ -188,22 +188,22 @@
             
             <span class="tag">
                 
-                <a href="/tags/all/" style="color: #ffa2c4">all</a>
+                <a href="/tags/all/" style="color: #03a9f4">all</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">代码</a>
+                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/vbs/" style="color: #ff7d73">vbs</a>
+                <a href="/tags/vbs/" style="color: #00bcd4">vbs</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/bat/" style="color: #ff7d73">bat</a>
+                <a href="/tags/bat/" style="color: #00bcd4">bat</a>
             </span>
             
         </span>
@@ -305,7 +305,7 @@ end sub
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+            <a target="_blank" rel="noopener" href="https://jiaozi0925.cn/">Jiaozi</a>
         </div>
         
         <div>
@@ -316,7 +316,41 @@ end sub
         </div>
         
     </div>
+    <!--《添加网站运行时间 -->
+<!--<br/>-->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("06/04/2023 12:00:00"); //此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = " 本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间》 -->
 </footer>
+
+
 
                 </div>
             </transition>

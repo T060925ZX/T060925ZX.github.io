@@ -179,7 +179,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
+                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
             </span>
             
             <span class="tag">
@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Git/" style="color: #03a9f4">Git</a>
+                <a href="/tags/Git/" style="color: #ff7d73">Git</a>
             </span>
             
         </span>
@@ -200,8 +200,10 @@
         <blockquote>
 <p>环境准备： Windows or Linux，Node.js（ <a target="_blank" rel="noopener" href="https://nodejs.cn/download/">版本至少 v18 以上</a> ）， <a target="_blank" rel="noopener" href="https://redis.io/docs/getting-started/installation">Redis</a></p>
 </blockquote>
+<span id="more"></span>
+
 <ol>
-<li>克隆项目并安装 genshin miao-plugin <div><br>请根据网络情况选择 Github 安装或 Gitee 安装 <div><span id="more"></span></li>
+<li>克隆项目并安装 genshin miao-plugin <div><br>请根据网络情况选择 Github 安装或 Gitee 安装 <div></li>
 </ol>
 <pre><code># 使用 Github
 git clone --depth 1 https://github.com/TimeRainStarSky/Yunzai
@@ -278,7 +280,7 @@ websocket_url = [&quot;ws://localhost:2536/ComWeChat&quot;]
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+            <a target="_blank" rel="noopener" href="https://jiaozi0925.cn/">Jiaozi</a>
         </div>
         
         <div>
@@ -289,7 +291,41 @@ websocket_url = [&quot;ws://localhost:2536/ComWeChat&quot;]
         </div>
         
     </div>
+    <!--《添加网站运行时间 -->
+<!--<br/>-->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("06/04/2023 12:00:00"); //此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = " 本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间》 -->
 </footer>
+
+
 
                 </div>
             </transition>
