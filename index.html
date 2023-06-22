@@ -38,6 +38,52 @@
 
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
+        <div id="he-plugin-simple"></div>
+        <script>
+        WIDGET = {
+          "CONFIG": {
+            "modules": "01234",
+            "background": "1",
+            "tmpColor": "FFFFFF",
+            "tmpSize": "16",
+            "cityColor": "FFFFFF",
+            "citySize": "16",
+            "aqiColor": "FFFFFF",
+            "aqiSize": "16",
+            "weatherIconSize": "24",
+            "alertIconSize": "18",
+            "padding": "10px 10px 10px 10px",
+            "shadow": "0",
+            "language": "auto",
+            "borderRadius": "15",
+            "fixed": "true",
+            "vertical": "top",
+            "horizontal": "left",
+            "left": "10",
+            "top": "70",
+            "key": "55c9c5f4e0c84ef39a1635fda01d2c6b"
+          }
+        }
+        </script>
+        <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>
+
         <div id="layout">
             <transition name="fade">
                 <div id="loading" v-show="loading">
@@ -78,6 +124,11 @@
         <a href="/tags/all">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/music">
+            <i class="fa-solid fa-musics fa-fw"></i>
+            <span>&ensp;❤Music</span>
         </a>
         
         <a href="/loves">
@@ -139,6 +190,15 @@
                     </div>
                 </a>
                 
+                <a href="/music">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-musics fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">❤Music</div>
+                    </div>
+                </a>
+                
                 <a href="/loves">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
@@ -171,6 +231,7 @@
                 <h3></h3>
                 <h5>欢迎光临</h5>
                 <p id="hitokoto">正在加载一言...</p>
+                
             </div>
         </span>
     </div>
@@ -211,12 +272,12 @@
         
         <span class="tag">
             
-            <a href="/tags/all/" style="color: #00a596">all</a>
+            <a href="/tags/all/" style="color: #03a9f4">all</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00bcd4">代码</a>
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">代码</a>
         </span>
         
     </div>
@@ -255,7 +316,7 @@
         
         <span class="tag">
             
-            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #00a596">生活</a>
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ff7d73">生活</a>
         </span>
         
         <span class="tag">
@@ -314,22 +375,22 @@ for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: 
         
         <span class="tag">
             
-            <a href="/tags/all/" style="color: #00bcd4">all</a>
+            <a href="/tags/all/" style="color: #ff7d73">all</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vbs/" style="color: #00a596">vbs</a>
+            <a href="/tags/vbs/" style="color: #00bcd4">vbs</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/bat/" style="color: #00a596">bat</a>
+            <a href="/tags/bat/" style="color: #ffa2c4">bat</a>
         </span>
         
     </div>
@@ -369,7 +430,7 @@ for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: 
         
         <span class="tag">
             
-            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ffa2c4">代码</a>
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
         </span>
         
         <span class="tag">
@@ -426,17 +487,17 @@ for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: 
         
         <span class="tag">
             
-            <a href="/tags/all/" style="color: #ff7d73">all</a>
+            <a href="/tags/all/" style="color: #03a9f4">all</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00bcd4">代码</a>
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/C/" style="color: #00bcd4">C++</a>
+            <a href="/tags/C/" style="color: #ff7d73">C++</a>
         </span>
         
         <span class="tag">
@@ -490,7 +551,7 @@ for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: 
         
         <span class="tag">
             
-            <a href="/tags/all/" style="color: #ff7d73">all</a>
+            <a href="/tags/all/" style="color: #00bcd4">all</a>
         </span>
         
         <span class="tag">
@@ -542,12 +603,12 @@ for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: 
         
         <span class="tag">
             
-            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ff7d73">生活</a>
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ffa2c4">生活</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/all/" style="color: #00bcd4">all</a>
+            <a href="/tags/all/" style="color: #ffa2c4">all</a>
         </span>
         
     </div>
@@ -586,12 +647,12 @@ for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: 
         
         <span class="tag">
             
-            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #00a596">生活</a>
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #03a9f4">生活</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/all/" style="color: #00a596">all</a>
+            <a href="/tags/all/" style="color: #ff7d73">all</a>
         </span>
         
     </div>
@@ -646,7 +707,7 @@ categories: &#39;categorie&#39;         #分类
         
         <span class="tag">
             
-            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">代码</a>
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
         </span>
         
     </div>
@@ -711,17 +772,17 @@ categories: &#39;categorie&#39;         #分类
         
         <span class="tag">
             
-            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #03a9f4">生活</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/all/" style="color: #00a596">all</a>
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #00bcd4">生活</a>
         </span>
         
         <span class="tag">
             
             <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #00a596">测试</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #ff7d73">all</a>
         </span>
         
     </div>
@@ -756,7 +817,7 @@ categories: &#39;categorie&#39;         #分类
         <div class="description">
             
             
-            <p>宵宫姐姐，欸嘿嘿嘿…..</p>
+            <p>泉州好热啊！！</p>
 
         </div>
         
@@ -805,6 +866,9 @@ categories: &#39;categorie&#39;         #分类
       console.error(err);
     })
 </script>
+
+
+
                     <footer id="footer">
     <div id="footer-wrap">
         <div>
@@ -861,9 +925,8 @@ categories: &#39;categorie&#39;         #分类
     setInterval("createtime()", 250);
 </script>
 <!-- 添加网站运行时间 -->
+
 </footer>
-
-
 
 
 
@@ -882,3 +945,4 @@ categories: &#39;categorie&#39;         #分类
         
     </body>
 </html>
+
