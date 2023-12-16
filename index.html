@@ -1,0 +1,989 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>Jiaozi の 小窝</title>
+        <meta name="author" content="Jiaozi" />
+        <meta name="description" content="欢迎光临" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        
+        
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>JIAOZI の 小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories/Hello">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags/all">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/music">
+            <i class="fa-solid fa-musics fa-fw"></i>
+            <span>&ensp;❤Music</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;JIAOZI の 小窝</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/Hello">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags/all">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <a href="/music">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-musics fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">❤Music</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-images="/images/background1.jpg"></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Jiaozi の 小窝</h1>
+                <h3></h3>
+                <h5>欢迎光临</h5>
+                <p id="hitokoto">正在加载一言...</p>
+                
+            </div>
+        </span>
+    </div>
+</div>
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2023/11/25/qqsign/">
+        <h2 class="post-title">QQ签名API部署</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Yunzai/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Yunzai
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/25
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="关于QQ签名API在云崽的一键部署"><a href="#关于QQ签名API在云崽的一键部署" class="headerlink" title="关于QQ签名API在云崽的一键部署"></a>关于QQ签名API在云崽的一键部署</h3><blockquote>
+<p>环境准备：丝滑的梯子，部署好的Yunzai-Bot，一定的cv技巧</p>
+</blockquote>
+<p>由于本人经济条件不太允许，暂且白嫖一下<a target="_blank" rel="noopener" href="https://huggingface.co/spaces/TU060925/QQsign">HuggingFace</a>的免费2H16G的服务器</p>
+<p>点击上述链接打开空间，点击右上角设置</p>
+<blockquote>
+<p>待编辑</p>
+</blockquote>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Yunzai/" style="color: #ff7d73">Yunzai</a>
+        </span>
+        
+    </div>
+    <a href="/2023/11/25/qqsign/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/25/Yunzai-bot/">
+        <h2 class="post-title">Yunzai-Bot本地部署</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Yunzai/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Yunzai
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/25
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <blockquote>
+<p>环境准备： Windows or Linux，Node.js（ <a target="_blank" rel="noopener" href="https://nodejs.cn/download/">版本至少 v18 以上</a> ）， <a target="_blank" rel="noopener" href="https://redis.io/docs/getting-started/installation">Redis</a></p>
+</blockquote>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Node/" style="color: #00a596">Node</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Git/" style="color: #00bcd4">Git</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Yunzai/" style="color: #03a9f4">Yunzai</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/25/Yunzai-bot/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/25/zhenggu/">
+        <h2 class="post-title">文本文档整蛊源码</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%A3%E7%A0%81/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                代码
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/25
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="以下代码均需要更改文件后缀名"><a href="#以下代码均需要更改文件后缀名" class="headerlink" title="以下代码均需要更改文件后缀名"></a>以下代码均需要更改文件后缀名</h3><hr>
+<h4 id="1-许多磁盘"><a href="#1-许多磁盘" class="headerlink" title="1.许多磁盘"></a>1.许多磁盘</h4><pre><code class="bat">@echo off
+for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: C:\)
+</code></pre>
+<p>解除方法</p>
+<pre><code class="bat">@echo off
+for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: /d)
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #00a596">all</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vbs/" style="color: #00bcd4">vbs</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/bat/" style="color: #03a9f4">bat</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/25/zhenggu/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/25/tanchishe/">
+        <h2 class="post-title">贪吃蛇小游戏源码</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E4%BB%A3%E7%A0%81/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                代码
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/25
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>贪吃蛇源码<p></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #00bcd4">all</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">代码</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/C/" style="color: #ff7d73">C++</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #03a9f4">python</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/25/tanchishe/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/25/hello-world/">
+        <h2 class="post-title">Hello World</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Hello/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Hello
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/25
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>欢迎来到饺子的小窝</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ffa2c4">生活</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #ffa2c4">all</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/25/hello-world/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/22/bye/">
+        <h2 class="post-title">bye</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>结束啦，嘿嘿</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #00bcd4">生活</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #03a9f4">all</a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/22/bye/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/22/hexo-time/">
+        <h2 class="post-title">如何在hexo博客上添加运行时间</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>1.找到 <code>\themes\next(你的主题目录）\layout\</code> 下面的 <code>footer.swig</code>或 <code>footer.ejs</code>文件</p>
+<p>2.在合适的位置添加下面代码（通过运行调试，查看运行时间出现的位置）</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #00a596">all</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/22/hexo-time/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/22/sbpy/">
+        <h2 class="post-title">震惊，泉州市某中学暑假竟然这个时候才放......</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/22
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>据不可靠消息称，泉州市某中学期末考完竟然要<code>7月20多号</code>以后才放假，究竟是人性的扭曲还是道德的沦丧！cao</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ffa2c4">生活</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #ffa2c4">all</a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/22/sbpy/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/07/Sky/">
+        <h2 class="post-title">Sky</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/7
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>由 thatgamecompany 推出的社交冒险游戏《Sky 光·遇》（Sky: Children of the Light），配合纪念thatgamecompany 成立17周年，宣布确定将透过 Steam 平台推出 PC 版。目前 Steam 已公开游戏页面，可加入玩家愿望清单。<br><img src="https://pic1.zhimg.com/80/v2-1f700bac858d5c9b8beec57f457c8e34_720w.webp"></p>
+<h6 id="来自-知乎-阿冰手游精选"><a href="#来自-知乎-阿冰手游精选" class="headerlink" title="来自 知乎@阿冰手游精选"></a>来自 知乎@阿冰手游精选</h6>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #00bcd4">生活</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #ff7d73">all</a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/07/Sky/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/06/hexo-help/">
+        <h2 class="post-title">hexo help</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/6
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h2 id="Hexo常用代码"><a href="#Hexo常用代码" class="headerlink" title="Hexo常用代码"></a>Hexo常用代码</h2><hr>
+<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><pre><code class="cmd">hexo n &quot;name&quot;
+</code></pre>
+<h4 id="文件头"><a href="#文件头" class="headerlink" title="文件头"></a>文件头</h4><pre><code class="md">---
+title: &#39;title&#39;                  #标题
+date: &#39;2023-1-1  10:00:00&#39;     #创建时间
+tags:                          #标签
+- &#39;tag1&#39;
+- &#39;tag2&#39;
+keywords: &#39;keyword&#39;             #关键字
+categories: &#39;categorie&#39;         #分类
+---
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #ff7d73">all</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/06/hexo-help/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/06/04/ceshi/">
+        <h2 class="post-title">测试文件</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E6%B5%8B%E8%AF%95/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                测试
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>代码测试：</p>
+<pre><code class="py">print(&quot;Hello&quot;)
+</code></pre>
+<p>图片测试：</p>
+<!--![]](https://wx4.sinaimg.cn/large/00881cOZly8hepikuhw2dj31uo2oou0x.jpg)-->
+<p><img src="/images/tupian/111.png"></p>
+<p>文本链接测试：</p>
+<p><a href="/2023/06/04/ceshi">点击阅读全文</a></p>
+<p>引用测试：</p>
+<blockquote>
+<p>这是一条引用</p>
+</blockquote>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>无序列表测试：</p>
+<ul>
+<li>哈哈</li>
+<li>嘿嘿</li>
+<li>吼吼</li>
+</ul>
+<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><p>缩略测试:<p><br>请点击阅读全文</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #00a596">生活</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/all/" style="color: #ffa2c4">all</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%B5%8B%E8%AF%95/" style="color: #00bcd4">测试</a>
+        </span>
+        
+    </div>
+    <a href="/2023/06/04/ceshi/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
+    <div class="prev">
+        
+    </div>
+    <div class="page-index">
+        
+        <span class="current">1</span>
+        
+    </div>
+    <div class="next">
+        
+    </div>
+</div>
+
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        
+        <div class="name">Jiaozi</div>
+        <div class="description">
+            
+            
+            <p>要和我一起去看祭典吗！</p>
+
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://xiaojiaozi.top/">国际线路</a>
+            </div>
+            
+        </div>
+        
+    </div>
+
+
+
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=1987441011&auto=1&height=32"></iframe>
+
+    <div>
+        <div id="he-plugin-simple"></div>
+        <script>
+        WIDGET = {
+          "CONFIG": {
+            "modules": "01234",
+            "background": "1",
+            "tmpColor": "FFFFFF",
+            "tmpSize": "16",
+            "cityColor": "FFFFFF",
+            "citySize": "16",
+            "aqiColor": "FFFFFF",
+            "aqiSize": "16",
+            "weatherIconSize": "24",
+            "alertIconSize": "18",
+            "padding": "10px 10px 10px 10px",
+            "shadow": "0",
+            "language": "auto",
+            "borderRadius": "15",
+            "fixed": "false",
+            "vertical": "top",
+            "horizontal": "left",
+            "key": "fe88b10adbf14201bf1f9a5a4838ab85"
+          }
+        }
+        </script>
+        <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+        </div>
+
+</div>
+
+    </div>
+    
+</div>
+
+<!-- 一言API -->
+<!-- 现代写法，推荐 -->
+<!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<!--End-->
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            
+            &copy;
+            2023 - 2023 Jiaozi の 小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Jiaozi
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://jiaozi0925.cn/">Jiaozi</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20230599">萌ICP备20230599号</a>
+            
+        </div>
+        
+    </div>
+    <!--添加网站运行时间 -->
+<!--<br/>-->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("06/04/2023 12:00:00"); //此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = " 本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间 -->
+
+</footer>
+
+
+
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+    </body>
+</html>
+
