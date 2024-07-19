@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>Categories: 代码 | Jiaozi の 小窝</title>
+        <title>QSign | Jiaozi の 小窝</title>
         <meta name="author" content="Jiaozi" />
         <meta name="description" content="欢迎光临" />
         <meta name="keywords" content="" />
@@ -27,6 +27,10 @@
 
 
 <script src="/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -187,157 +191,99 @@
 
             <transition name="into">
                 <div id="main" v-show="!loading">
-                    <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        <span>
-            <a href="/categories/Hello/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Hello
-            </a>
+                    <div class="article">
+    <div>
+        <h1>QSign</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/7/19
         </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E6%B5%8B%E8%AF%95/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                测试
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E6%96%87%E6%A1%88/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                文案
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E4%BB%A3%E7%A0%81/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                代码
-            </a>
-        </span>
-        
-        
         
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/7/22</div>
-            <a href="/2023/07/22/zhenggu/">
-                <h3>文本文档整蛊源码</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E4%BB%A3%E7%A0%81/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        代码
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/all/" style="color: #ff7d73">all</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00bcd4">代码</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/vbs/" style="color: #03a9f4">vbs</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/bat/" style="color: #00bcd4">bat</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1 id="Yunzai问题解决方案-Qsign"><a href="#Yunzai问题解决方案-Qsign" class="headerlink" title="Yunzai问题解决方案 Qsign"></a>Yunzai问题解决方案 Qsign</h1><blockquote>
+<p>环境准备： 部署好的Yunzai-Bot</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><blockquote>
+<p>提示：要先修改设备文件以兼容高版本签名<code>9.0.17+</code></p>
+</blockquote>
+<h4 id="方法一：（此方法仅适用于喵崽）"><a href="#方法一：（此方法仅适用于喵崽）" class="headerlink" title="方法一：（此方法仅适用于喵崽）"></a>方法一：（此方法仅适用于喵崽）</h4><blockquote>
+<p>将下载的文件放入<code>Miao-Yunzai\node_modules\icqq\lib\core\device.js</code>替换掉原来的<code>device.js</code> </p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://wwt.lanzouv.com/icSF624zhaod">点击这里下载文件</a></p>
+<blockquote>
+<h5 id="由于格式限制，下载后将device-js-txt重命名为device-js"><a href="#由于格式限制，下载后将device-js-txt重命名为device-js" class="headerlink" title="由于格式限制，下载后将device.js.txt重命名为device.js"></a>由于格式限制，下载后将<code>device.js.txt</code>重命名为<code>device.js</code></h5></blockquote>
+<h4 id="方法二（1）：（不知道能不能用）"><a href="#方法二（1）：（不知道能不能用）" class="headerlink" title="方法二（1）：（不知道能不能用）"></a>方法二（1）：（不知道能不能用）</h4><p>如果你的ICQQ版本≤0.6.10，使用高于9.17签名的时候，请进入fish，cd到崽的目录下，执行以下命令</p>
+<pre><code class="bash">curl -sSL Qsign.icu/ver |bash
+</code></pre>
+<h4 id="方法二（2）：（适用于使用TRSS-Script-TRSS脚本安装的崽-）"><a href="#方法二（2）：（适用于使用TRSS-Script-TRSS脚本安装的崽-）" class="headerlink" title="方法二（2）：（适用于使用TRSS Script(TRSS脚本安装的崽)）"></a>方法二（2）：（适用于使用TRSS Script(TRSS脚本安装的崽)）</h4><p>安装云崽完毕后（首次输入输入node app前），在云崽根目录打开trss终端，运行</p>
+<pre><code class="bash">tsab c &#39;cd $DIR/Miao-Yunzai &amp;&amp; curl -sSL QSign.icu/X bash&#39;
+</code></pre>
+<p>后再输入<code>node app</code>进行配置qq号等</p>
+<p>签名地址为<code>https://hlhs-nb.cn/signed/?key=114514</code></p>
+<p>如果你已经配置完毕，请在云崽根目录打开cmd后进行以上操作，重新配置</p>
+<hr>
+<h2 id="签名使用方法："><a href="#签名使用方法：" class="headerlink" title="签名使用方法："></a>签名使用方法：</h2><h3 id="Miao-Yunzai修改方法"><a href="#Miao-Yunzai修改方法" class="headerlink" title="Miao-Yunzai修改方法"></a>Miao-Yunzai修改方法</h3><p>打开<code>Miao-Yunzai/config/config/bot.yaml</code></p>
+<p>在文件的末尾我们可以看到如下</p>
+<pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)
+sign_api_addr:
+# 传入的QQ版本(如:8.9.63、8.9.68)
+ver:
+</code></pre>
+<p>按以下格式填入</p>
+<pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)
+sign_api_addr:
+# 传入的QQ版本(如:8.9.63、8.9.68)
+ver:
+</code></pre>
+<hr>
+<h2 id="Qsign签名API大全（-截至24-07-19收录-）"><a href="#Qsign签名API大全（-截至24-07-19收录-）" class="headerlink" title="Qsign签名API大全（ 截至24-07-19收录 ）"></a>Qsign签名API大全<code>（ 截至24-07-19收录 ）</code></h2><ul>
+<li><h4 id="9-0-签名（强烈推荐：根据ICQQ版本自动获取签名版本）"><a href="#9-0-签名（强烈推荐：根据ICQQ版本自动获取签名版本）" class="headerlink" title="9.0.**签名（强烈推荐：根据ICQQ版本自动获取签名版本）"></a>9.0.**签名（强烈推荐：根据ICQQ版本自动获取签名版本）</h4></li>
+</ul>
+<pre><code class="yaml">https://hlhs-nb.cn/signed/?key=114514
+</code></pre>
+<ul>
+<li><h4 id="9-0-8签名"><a href="#9-0-8签名" class="headerlink" title="9.0.8签名"></a>9.0.8签名</h4></li>
+</ul>
+<pre><code class="yaml">http://47.108.180.154:908?key=114514
+</code></pre>
+<ul>
+<li><h4 id="9-0-17签名"><a href="#9-0-17签名" class="headerlink" title="9.0.17签名"></a>9.0.17签名</h4></li>
+</ul>
+<pre><code class="yaml">http://47.108.180.154:9017?key=114514
+</code></pre>
+<ul>
+<li><h4 id="时雨的白名单签名（需要加群659945190，私聊群主获取授权白名单）"><a href="#时雨的白名单签名（需要加群659945190，私聊群主获取授权白名单）" class="headerlink" title="时雨的白名单签名（需要加群659945190，私聊群主获取授权白名单）"></a>时雨的白名单签名<code>（需要加群659945190，私聊群主获取授权白名单）</code></h4></li>
+</ul>
+<pre><code class="yaml">http://gz.console.microgg.cn:2536
+</code></pre>
+<ul>
+<li><h4 id="9-0-56签名-9-0-75签名"><a href="#9-0-56签名-9-0-75签名" class="headerlink" title="9.0.56签名 9.0.75签名"></a><del>9.0.56签名</del> 9.0.75签名</h4></li>
+</ul>
+<h5 id="无key"><a href="#无key" class="headerlink" title="无key"></a>无key</h5><pre><code class="yaml">https://qsign.trpgbot.com
+</code></pre>
+<pre><code class="yaml">https://qsign-v4.trpgbot.com
+</code></pre>
+<h5 id="有key"><a href="#有key" class="headerlink" title="有key"></a>有key</h5><pre><code class="yaml">https://sbtx.f3.ttvt.cc?key=miraibbs
+</code></pre>
+<pre><code class="yaml">https://qsign.chahuyun.cn?key=miraibbs
+</code></pre>
+
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/7/22</div>
-            <a href="/2023/07/22/tanchishe/">
-                <h3>贪吃蛇小游戏源码</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E4%BB%A3%E7%A0%81/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        代码
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/all/" style="color: #ff7d73">all</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">代码</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/C/" style="color: #03a9f4">C++</a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/python/" style="color: #00bcd4">python</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
+    
+    
+    
     
 </div>
 
@@ -414,6 +360,12 @@
             
         </div>
         <script src="/js/main.js"></script>
+        
+        
+
+
+
+
         
     </body>
 </html>
