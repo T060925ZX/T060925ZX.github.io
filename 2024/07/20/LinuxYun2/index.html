@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>Hello World | Jiaozi の 小窝</title>
+        <title>在Linux部署云崽(2) | Jiaozi の 小窝</title>
         <meta name="author" content="Jiaozi" />
         <meta name="description" content="欢迎光临" />
         <meta name="keywords" content="" />
@@ -193,75 +193,162 @@
                 <div id="main" v-show="!loading">
                     <div class="article">
     <div>
-        <h1>Hello World</h1>
+        <h1>在Linux部署云崽(2)</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/7/22
+            2024/7/20
         </span>
         
-        <span class="category">
-            <a href="/categories/Hello/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Hello
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ffa2c4">生活</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/all/" style="color: #03a9f4">all</a>
-            </span>
-            
-        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <p>欢迎来到饺子的小窝</p>
+        <h1 id="本文是手搓教程，不是一键脚本"><a href="#本文是手搓教程，不是一键脚本" class="headerlink" title="本文是手搓教程，不是一键脚本"></a>本文是手搓教程，不是一键脚本</h1><blockquote>
+<p>环境准备： 一台配置好环境的Linux服务器，没有配置请<a target="_blank" rel="noopener" href="https://www.xiaojiaozi.top/2024/07/20/LinuxYun1/">点击这里</a></p>
+</blockquote>
 <span id="more"></span>
-<p>很高兴你能来到这里</p>
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><pre><code class="C">#include &lt;stdio.h&gt;
-int main(void) &#123;
-  printf(&quot;Hello, World!\n&quot;);
-  return 0;
-&#125;
+
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><blockquote>
+<p>环境要求：已经配置好 <code>Nodejs</code> <code>Git</code> <code>Redis</code> <code>ffmpeg(发送语言和视频)</code> <code>chromium</code> 的服务器</p>
+</blockquote>
+<hr>
+<h2 id="安装云崽本体"><a href="#安装云崽本体" class="headerlink" title="安装云崽本体"></a>安装云崽本体</h2><h3 id="Miao-Yunzai"><a href="#Miao-Yunzai" class="headerlink" title="Miao-Yunzai"></a>Miao-Yunzai</h3><ul>
+<li><h4 id="克隆项目"><a href="#克隆项目" class="headerlink" title="克隆项目"></a>克隆项目</h4></li>
+</ul>
+<blockquote>
+<p>请根据网络情况选择Github安装或Gitee安装</p>
+</blockquote>
+<pre><code class="bash"># 使用 Github 
+git clone --depth=1 https://github.com/yoimiya-kokomi/Miao-Yunzai.git
+cd Miao-Yunzai 
+git clone --depth=1 https://github.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin/
 </code></pre>
-<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><pre><code class="C++">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-int main() &#123;
-  cout &lt;&lt; &quot;Hello, World!&quot; &lt;&lt; endl;
-  return 0;
-&#125;
+<pre><code class="bash"># 使用Gitee
+git clone --depth=1 https://gitee.com/yoimiya-kokomi/Miao-Yunzai.git
+cd Miao-Yunzai 
+git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin/
 </code></pre>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><pre><code class="Python">print(&quot;Hello, World!&quot;)
+<ul>
+<li><h4 id="安装pnpm"><a href="#安装pnpm" class="headerlink" title="安装pnpm"></a>安装pnpm</h4></li>
+</ul>
+<blockquote>
+<p>已安装的可以跳过</p>
+</blockquote>
+<pre><code class="bash">npm install pnpm -g
 </code></pre>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><pre><code class="Java">class HelloWorld &#123;
-  public static void main(String[] args) &#123;
-    System.out.println(&quot;Hello, World!&quot;);
-  &#125;
-&#125;
+<ul>
+<li><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4></li>
+</ul>
+<blockquote>
+<p>外网环境请修改的本地npm配置.npmrc</p>
+</blockquote>
+<pre><code class="bash"># 直接安装
+pnpm install -P
 </code></pre>
-<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><pre><code class="Go">package main
-import &quot;fmt&quot;
-func main() &#123;
-  fmt.Println(&quot;Hello, World!&quot;)
-&#125;
+<ul>
+<li><h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4></li>
+</ul>
+<blockquote>
+<p>首次运行按提示输入登录</p>
+</blockquote>
+<pre><code class="bash">npm run app
+</code></pre>
+<ul>
+<li><h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4></li>
+</ul>
+<pre><code class="bash">npm run login
+</code></pre>
+<ul>
+<li><h4 id="托管"><a href="#托管" class="headerlink" title="托管"></a>托管</h4></li>
+</ul>
+<pre><code class="bash">npm run start
+</code></pre>
+<blockquote>
+<p>遇到登录错误（45）请<a target="_blank" rel="noopener" href="https://www.xiaojiaozi.top/2024/07/19/qsign/">点击这里</a>配置签名API</p>
+</blockquote>
+<hr>
+<h3 id="TRSS-Yunzai"><a href="#TRSS-Yunzai" class="headerlink" title="TRSS-Yunzai"></a>TRSS-Yunzai</h3><ul>
+<li><h4 id="克隆项目-1"><a href="#克隆项目-1" class="headerlink" title="克隆项目"></a>克隆项目</h4></li>
+</ul>
+<blockquote>
+<p>请根据网络情况选择Github安装或Gitee安装</p>
+</blockquote>
+<pre><code class="bash"># 使用 Github 
+git clone --depth 1 https://github.com/TimeRainStarSky/Yunzai
+# 使用Gitee
+git clone --depth 1 https://gitee.com/TimeRainStarSky/Yunzai
+</code></pre>
+<pre><code class="bash">cd Yunzai
+</code></pre>
+<ul>
+<li><h4 id="安装pnpm和依赖"><a href="#安装pnpm和依赖" class="headerlink" title="安装pnpm和依赖"></a>安装pnpm和依赖</h4></li>
+</ul>
+<pre><code class="bash">npm i -g pnpm
+pnpm i
+</code></pre>
+<ul>
+<li><h4 id="前台启动"><a href="#前台启动" class="headerlink" title="前台启动"></a>前台启动</h4></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动</td>
+<td>node .</td>
+</tr>
+<tr>
+<td>停止</td>
+<td>node . stop</td>
+</tr>
+</tbody></table>
+<ul>
+<li><h4 id="使用-pm2-后台运行-进程守护"><a href="#使用-pm2-后台运行-进程守护" class="headerlink" title="使用 pm2 后台运行 (进程守护)"></a>使用 <a target="_blank" rel="noopener" href="https://pm2.keymetrics.io/">pm2</a> 后台运行 (进程守护)</h4></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动</td>
+<td>pnpm start</td>
+</tr>
+<tr>
+<td>停止</td>
+<td>pnpm stop</td>
+</tr>
+<tr>
+<td>日志</td>
+<td>pnpm log</td>
+</tr>
+</tbody></table>
+<ul>
+<li><h4 id="前台启动开机自启-需要安装-pm2"><a href="#前台启动开机自启-需要安装-pm2" class="headerlink" title="前台启动开机自启 (需要安装 pm2 )"></a>前台启动开机自启 (需要安装 <a target="_blank" rel="noopener" href="https://pm2.keymetrics.io/">pm2</a> )</h4></li>
+</ul>
+<p>安装 PM2</p>
+<pre><code class="bash">npm install pm2 -g
+</code></pre>
+<pre><code class="bash">pnpm start
+pnpm pm2 save
+pnpm pm2 startup
+</code></pre>
+<hr>
+<blockquote>
+<p>启动TRSS-Yunzai后需要在控制台输入</p>
+</blockquote>
+<pre><code class="md">#安装genshin
+#安装miao-plugin
+#安装TRSS-Plugin
 </code></pre>
 
     </div>

@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>Hello World | Jiaozi の 小窝</title>
+        <title>在Linux部署云崽(1) | Jiaozi の 小窝</title>
         <meta name="author" content="Jiaozi" />
         <meta name="description" content="欢迎光临" />
         <meta name="keywords" content="" />
@@ -193,76 +193,62 @@
                 <div id="main" v-show="!loading">
                     <div class="article">
     <div>
-        <h1>Hello World</h1>
+        <h1>在Linux部署云崽(1)</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/7/22
+            2024/7/20
         </span>
         
-        <span class="category">
-            <a href="/categories/Hello/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Hello
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ffa2c4">生活</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/all/" style="color: #03a9f4">all</a>
-            </span>
-            
-        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <p>欢迎来到饺子的小窝</p>
+        <h1 id="本文是手搓教程，不是一键脚本"><a href="#本文是手搓教程，不是一键脚本" class="headerlink" title="本文是手搓教程，不是一键脚本"></a>本文是手搓教程，不是一键脚本</h1><blockquote>
+<p>环境准备： 一台Linux服务器，推荐使用<code>Debian</code>和<code>Ubuntu</code>系统（按顺序推荐）</p>
+</blockquote>
 <span id="more"></span>
-<p>很高兴你能来到这里</p>
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><pre><code class="C">#include &lt;stdio.h&gt;
-int main(void) &#123;
-  printf(&quot;Hello, World!\n&quot;);
-  return 0;
-&#125;
+
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><blockquote>
+<p>所需环境 <code>Nodejs</code> <code>Git</code> <code>Redis</code> <code>ffmpeg(发送语言和视频)</code> <code>chromium</code></p>
+</blockquote>
+<hr>
+<h3 id="先配置环境安装环境，有点服务器没有"><a href="#先配置环境安装环境，有点服务器没有" class="headerlink" title="先配置环境安装环境，有点服务器没有"></a>先配置环境安装环境，有点服务器没有</h3><pre><code class="bash">apt update
 </code></pre>
-<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><pre><code class="C++">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-int main() &#123;
-  cout &lt;&lt; &quot;Hello, World!&quot; &lt;&lt; endl;
-  return 0;
-&#125;
+<pre><code class="bash">apt install sudo
 </code></pre>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><pre><code class="Python">print(&quot;Hello, World!&quot;)
+<pre><code class="bash">sudo apt install curl
 </code></pre>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><pre><code class="Java">class HelloWorld &#123;
-  public static void main(String[] args) &#123;
-    System.out.println(&quot;Hello, World!&quot;);
-  &#125;
-&#125;
+<hr>
+<h3 id="使用nvm安装Nodejs"><a href="#使用nvm安装Nodejs" class="headerlink" title="使用nvm安装Nodejs"></a>使用nvm安装Nodejs</h3><pre><code class="bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 </code></pre>
-<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><pre><code class="Go">package main
-import &quot;fmt&quot;
-func main() &#123;
-  fmt.Println(&quot;Hello, World!&quot;)
-&#125;
+<h4 id="安装Nodejs22"><a href="#安装Nodejs22" class="headerlink" title="安装Nodejs22"></a>安装Nodejs22</h4><pre><code class="bash">nvm install 22
 </code></pre>
+<h4 id="检测是否安装成功"><a href="#检测是否安装成功" class="headerlink" title="检测是否安装成功"></a>检测是否安装成功</h4><pre><code class="bash">node -v # should print `v22.5.1`
+</code></pre>
+<pre><code class="bash">npm -v # should print `10.8.2`
+</code></pre>
+<hr>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><pre><code class="bash">sudo apt update
+</code></pre>
+<pre><code class="bash">sudo apt install git
+</code></pre>
+<h4 id="检测是否安装成功-1"><a href="#检测是否安装成功-1" class="headerlink" title="检测是否安装成功"></a>检测是否安装成功</h4><pre><code class="bash">git -v # should print `git version 2.39.2
+</code></pre>
+<hr>
+<h3 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h3><pre><code class="bash">sudo apt install redis
+</code></pre>
+<hr>
+<h3 id="安装ffmpeg"><a href="#安装ffmpeg" class="headerlink" title="安装ffmpeg"></a>安装ffmpeg</h3><pre><code class="bash">sudo apt install ffmpeg
+</code></pre>
+<hr>
+<h3 id="安装chromium"><a href="#安装chromium" class="headerlink" title="安装chromium"></a>安装chromium</h3><pre><code class="bash">sudo apt install chromium-browser
+</code></pre>
+<hr>
+<p>现在你已经配置完成环境了，<a target="_blank" rel="noopener" href="https://www.xiaojiaozi.top/2024/07/20/LinuxYun2/">点击这里</a>跳转下一步</p>
 
     </div>
     
