@@ -245,14 +245,60 @@
 <pre><code class="bash">sudo apt install curl
 </code></pre>
 <hr>
-<h3 id="使用nvm安装Nodejs"><a href="#使用nvm安装Nodejs" class="headerlink" title="使用nvm安装Nodejs"></a>使用nvm安装Nodejs</h3><pre><code class="bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+<h3 id="使用nvm安装Nodejs"><a href="#使用nvm安装Nodejs" class="headerlink" title="使用nvm安装Nodejs"></a>使用nvm安装Nodejs</h3><h4 id="安装NVM包管理器"><a href="#安装NVM包管理器" class="headerlink" title="安装NVM包管理器"></a>安装NVM包管理器</h4><pre><code class="bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 </code></pre>
-<h4 id="安装Nodejs22"><a href="#安装Nodejs22" class="headerlink" title="安装Nodejs22"></a>安装Nodejs22</h4><pre><code class="bash">nvm install 22
+<h4 id="刷新一下"><a href="#刷新一下" class="headerlink" title="刷新一下"></a>刷新一下</h4><pre><code class="bash">source ~/.bashrc
 </code></pre>
-<h4 id="检测是否安装成功"><a href="#检测是否安装成功" class="headerlink" title="检测是否安装成功"></a>检测是否安装成功</h4><pre><code class="bash">node -v # should print `v22.5.1`
+<h4 id="安装Nodejs22"><a href="#安装Nodejs22" class="headerlink" title="安装Nodejs22"></a>安装Nodejs22</h4><pre><code class="bash">nvm install v22.3.0
 </code></pre>
-<pre><code class="bash">npm -v # should print `10.8.2`
+<h4 id="检测是否安装成功"><a href="#检测是否安装成功" class="headerlink" title="检测是否安装成功"></a>检测是否安装成功</h4><pre><code class="bash">node -v # should print `v22.3.0`
 </code></pre>
+<pre><code class="bash">npm -v # should print `10.8.1`
+</code></pre>
+<h3 id="使用安装包安装Nodejs-不推荐"><a href="#使用安装包安装Nodejs-不推荐" class="headerlink" title="使用安装包安装Nodejs ( 不推荐 )"></a>使用安装包安装Nodejs ( 不推荐 )</h3><ul>
+<li>安装node</li>
+</ul>
+<p>cd 到&#x2F;usr&#x2F;local&#x2F;目录</p>
+<pre><code class="bash">cd /usr/local/
+</code></pre>
+<p>新建一个nodejs的目录</p>
+<pre><code class="bash">mkdir nodejs
+</code></pre>
+<p>&#x2F;&#x2F; 下载node</p>
+<pre><code class="bash">wget https://nodejs.org/dist/v22.5.1/node-v22.5.1-linux-x64.tar.xz
+</code></pre>
+<p>&#x2F;&#x2F; 解压node</p>
+<pre><code class="bash">tar xf node-v22.5.1-linux-x64.tar.xz
+</code></pre>
+<p>&#x2F;&#x2F; 重命名</p>
+<pre><code class="bash">mv node-v22.5.1-linux-x64 nodejs22
+</code></pre>
+<p>&#x2F;&#x2F; 设置node软链接</p>
+<pre><code class="bash">ln -s /usr/local/nodejs/nodejs22/bin/node /usr/bin/node
+</code></pre>
+<p>检查node是否安装成功</p>
+<pre><code class="bash">node -v
+</code></pre>
+<ul>
+<li>安装npm</li>
+</ul>
+<p>&#x2F;&#x2F; 配置npm软链接</p>
+<pre><code class="bash">ln -s /usr/local/nodejs/nodejs22/bin/npm /usr/bin/npm
+</code></pre>
+<p>&#x2F;&#x2F;检查npm是否配置成功: </p>
+<pre><code class="bash">npm -v
+</code></pre>
+<ul>
+<li>安装pm2</li>
+</ul>
+<pre><code class="bash">npm install -g pm2
+</code></pre>
+<p>&#x2F;&#x2F; 配置pm2软链接</p>
+<pre><code class="bash">ln -s /usr/local/nodejs/nodejs22/bin/pm2 /usr/bin/pm2
+</code></pre>
+<blockquote>
+<p>需要其他版本去<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/prebuilt-binaries">nodejs官网</a>找需要的版本 </p>
+</blockquote>
 <hr>
 <h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><pre><code class="bash">sudo apt update
 </code></pre>
