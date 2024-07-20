@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>Hello World | Jiaozi の 小窝</title>
+        <title>在Linux部署云崽(2) | Jiaozi の 小窝</title>
         <meta name="author" content="Jiaozi" />
         <meta name="description" content="欢迎光临" />
         <meta name="keywords" content="" />
@@ -193,22 +193,22 @@
                 <div id="main" v-show="!loading">
                     <div class="article">
     <div>
-        <h1>Hello World</h1>
+        <h1>在Linux部署云崽(2)</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/7/22
+            2024/7/20
         </span>
         
         <span class="category">
-            <a href="/categories/Hello/">
+            <a href="/categories/Yunzai/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Hello
+                Yunzai
             </a>
         </span>
         
@@ -220,12 +220,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E7%94%9F%E6%B4%BB/" style="color: #ff7d73">生活</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/all/" style="color: #03a9f4">all</a>
+                <a href="/tags/Yunzai/" style="color: #ff7d73">Yunzai</a>
             </span>
             
         </span>
@@ -233,36 +228,31 @@
     </div>
     
     <div class="content" v-pre>
-        <p>欢迎来到饺子的小窝</p>
-<span id="more"></span>
-<p>很高兴你能来到这里</p>
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><pre><code class="C">#include &lt;stdio.h&gt;
-int main(void) &#123;
-  printf(&quot;Hello, World!\n&quot;);
-  return 0;
-&#125;
+        <h1 id="本文用于解决云崽登录时各种问题"><a href="#本文用于解决云崽登录时各种问题" class="headerlink" title="本文用于解决云崽登录时各种问题"></a>本文用于解决云崽登录时各种问题</h1><h3 id="选择你遇到的问题"><a href="#选择你遇到的问题" class="headerlink" title="选择你遇到的问题"></a>选择你遇到的问题</h3><ul>
+<li><p><a href="#45">登录时候遇到45报错</a>  </p>
+</li>
+<li><p><a href="#237">登录时候遇到237报错</a>  </p>
+</li>
+<li><p><a href="#logs">日志乱码</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="登录错误（45）"><a href="#登录错误（45）" class="headerlink" title="登录错误（45）"></a><a id="45">登录错误（45）</a></h2><p><a target="_blank" rel="noopener" href="https://www.xiaojiaozi.top/2024/07/19/qsign/">点击跳转</a>获取解决方案</p>
+<h2 id="登录错误（237）"><a href="#登录错误（237）" class="headerlink" title="登录错误（237）"></a><a id="237">登录错误（237）</a></h2><p>(1) 在本地电脑登录一次<code>Yunzai</code></p>
+<p>(2) 打开<code>Yunzai\data\icqq</code></p>
+<p>(3) 复制<code>Yunzai\data\icqq\你的QQ号命名的文件夹</code></p>
+<p>(4) 将文件放到你服务器的<code>Yunzai\data\icqq</code>目录里</p>
+<p>(5) 登录你的崽，开始愉快的玩耍！！</p>
+<h2 id="登录错误（45）-1"><a href="#登录错误（45）-1" class="headerlink" title="登录错误（45）"></a><a id="logs">登录错误（45）</a></h2><p>一般来说是因为收到了特殊字符<br>例如某群名在手机看是会动的符号之类的</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><h4 id="下载-console-js-放到-node-modules-log4js-lib-appenders"><a href="#下载-console-js-放到-node-modules-log4js-lib-appenders" class="headerlink" title="下载 console.js 放到 node_modules&#x2F;log4js&#x2F;lib&#x2F;appenders&#x2F;"></a>下载 <a target="_blank" rel="noopener" href="https://yunzai.icu/console.js">console.js</a> 放到 node_modules&#x2F;log4js&#x2F;lib&#x2F;appenders&#x2F;</h4><h3 id="方法二（-推荐-）"><a href="#方法二（-推荐-）" class="headerlink" title="方法二（ 推荐 ）"></a>方法二（ 推荐 ）</h3><h4 id="在-Yunzai-根目录执行安装命令"><a href="#在-Yunzai-根目录执行安装命令" class="headerlink" title="在 Yunzai 根目录执行安装命令"></a>在 Yunzai 根目录执行安装命令</h4><pre><code class="bash">curl -#Lo &#39;node_modules/log4js/lib/appenders/console.js&#39; &#39;http://yunzai.icu/console.js&#39;
 </code></pre>
-<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><pre><code class="C++">#include &lt;bits/stdc++.h&gt;
-using namespace std;
-int main() &#123;
-  cout &lt;&lt; &quot;Hello, World!&quot; &lt;&lt; endl;
-  return 0;
-&#125;
-</code></pre>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><pre><code class="Python">print(&quot;Hello, World!&quot;)
-</code></pre>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><pre><code class="Java">class HelloWorld &#123;
-  public static void main(String[] args) &#123;
-    System.out.println(&quot;Hello, World!&quot;);
-  &#125;
-&#125;
-</code></pre>
-<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><pre><code class="Go">package main
-import &quot;fmt&quot;
-func main() &#123;
-  fmt.Println(&quot;Hello, World!&quot;)
-&#125;
-</code></pre>
+<hr>
+<blockquote>
+<p>提交其他错误请联系:1602833550 (QQ微信同号)</p>
+</blockquote>
+<blockquote>
+<p>或者点击提交表格<a target="_blank" rel="noopener" href="https://docs.qq.com/form/page/DTGd6d1pKak1Wa0JY">腾讯文档</a></p>
+</blockquote>
 
     </div>
     

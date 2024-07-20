@@ -203,6 +203,37 @@
             2024/7/19
         </span>
         
+        <span class="category">
+            <a href="/categories/Yunzai/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Yunzai
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Node/" style="color: #00a596">Node</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Git/" style="color: #00a596">Git</a>
+            </span>
+            
+        </span>
         
     </div>
     
@@ -255,7 +286,7 @@ curl -sSL Qsign.icu/ver |bash
 <p>脚本一键配置会自动添加签名版本？应该是这样的</p>
 </blockquote>
 <hr>
-<h2 id="签名配置方法："><a href="#签名配置方法：" class="headerlink" title="签名配置方法："></a><a id="length">签名配置方法：</a></h2><h3 id="Miao-Yunzai修改方法"><a href="#Miao-Yunzai修改方法" class="headerlink" title="Miao-Yunzai修改方法"></a>Miao-Yunzai修改方法</h3><p>打开<code>Miao-Yunzai/config/config/bot.yaml</code></p>
+<h2 id="签名配置方法："><a href="#签名配置方法：" class="headerlink" title="签名配置方法："></a><a id="length">签名配置方法：</a></h2><h5 id="点击这里看公共签名"><a href="#点击这里看公共签名" class="headerlink" title="点击这里看公共签名"></a><a href="#qianming">点击这里</a>看公共签名</h5><h3 id="Miao-Yunzai修改方法"><a href="#Miao-Yunzai修改方法" class="headerlink" title="Miao-Yunzai修改方法"></a>Miao-Yunzai修改方法</h3><p>打开<code>Miao-Yunzai/config/config/bot.yaml</code></p>
 <p>在文件的末尾我们可以看到如下</p>
 <pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)
 sign_api_addr:
@@ -268,8 +299,39 @@ sign_api_addr: https://hlhs-nb.cn/signed/?key=114514
 # 传入的QQ版本(如:8.9.63、8.9.68)（可填可不填，选择你要的版本）
 ver: 
 </code></pre>
+<h3 id="TRSS-Yunzai修改方法"><a href="#TRSS-Yunzai修改方法" class="headerlink" title="TRSS-Yunzai修改方法"></a>TRSS-Yunzai修改方法</h3><p>打开<code>TRSS-Yunzai/config/ICQQ.yaml</code></p>
+<pre><code class="yaml">tips:
+  - 欢迎使用 TRSS-Yunzai ICQQ Plugin ! 作者：时雨🌌星空
+  - 参考：https://github.com/TimeRainStarSky/Yunzai-ICQQ-Plugin
+permission: master
+markdown:
+  mode: false
+  button: false
+  callback: true
+bot:
+  sign_api_addr: https://hlhs-nb.cn/signed/?key=114514
+token: []
+</code></pre>
+<p>按以下格式填入（可以直接复制粘贴我的,自己修改）</p>
+<pre><code class="yaml">tips:
+  - 欢迎使用 TRSS-Yunzai ICQQ Plugin ! 作者：时雨🌌星空
+  - 参考：https://github.com/TimeRainStarSky/Yunzai-ICQQ-Plugin
+permission: master
+markdown:
+  mode: false
+  button: false
+  callback: true
+bot:
+  sign_api_addr: https://hlhs-nb.cn/signed/?key=114514
+token:
+    #QQ号:密码(留空扫码):登录设备(1安卓手机 2apad 3手表):版本号:独立签名地址
+  - 123456789:987654321:1
+  - 123456789:987654321:2
+  - 123456789:3
+  - 123456789:987654321:2:9.0.70:https://hlhs-nb.cn/signed/?key=114514
+</code></pre>
 <hr>
-<h2 id="Qsign签名API大全（-截至24-07-19收录-）"><a href="#Qsign签名API大全（-截至24-07-19收录-）" class="headerlink" title="Qsign签名API大全（ 截至24-07-19收录 ）"></a>Qsign签名API大全<code>（ 截至24-07-19收录 ）</code></h2><ul>
+<h2 id="Qsign签名API大全（-截至24-07-19收录-）"><a href="#Qsign签名API大全（-截至24-07-19收录-）" class="headerlink" title="Qsign签名API大全（ 截至24-07-19收录 ） "></a><a id="qianming">Qsign签名API大全<code>（ 截至24-07-19收录 ）</code> </a></h2><ul>
 <li><h4 id="9-0-签名（强烈推荐：根据ICQQ版本自动获取签名版本）"><a href="#9-0-签名（强烈推荐：根据ICQQ版本自动获取签名版本）" class="headerlink" title="9.0.**签名（强烈推荐：根据ICQQ版本自动获取签名版本）"></a>9.0.**签名（强烈推荐：根据ICQQ版本自动获取签名版本）</h4></li>
 </ul>
 <pre><code class="yaml">https://hlhs-nb.cn/signed/?key=114514
