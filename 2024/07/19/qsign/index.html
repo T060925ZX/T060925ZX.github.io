@@ -215,31 +215,58 @@
 <h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><blockquote>
 <p>提示：要先修改设备文件以兼容高版本签名<code>9.0.17+</code></p>
 </blockquote>
-<h4 id="方法一：（此方法仅适用于喵崽）"><a href="#方法一：（此方法仅适用于喵崽）" class="headerlink" title="方法一：（此方法仅适用于喵崽）"></a>方法一：（此方法仅适用于喵崽）</h4><blockquote>
+<hr>
+<h4 id="方法一：（-此方法仅适用于喵崽-）"><a href="#方法一：（-此方法仅适用于喵崽-）" class="headerlink" title="方法一：（ 此方法仅适用于喵崽 ）"></a>方法一：（ 此方法仅适用于喵崽 ）</h4><blockquote>
 <p>将下载的文件放入<code>Miao-Yunzai\node_modules\icqq\lib\core\device.js</code>替换掉原来的<code>device.js</code> </p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://wwt.lanzouv.com/icSF624zhaod">点击这里下载文件</a></p>
 <blockquote>
 <h5 id="由于格式限制，下载后将device-js-txt重命名为device-js"><a href="#由于格式限制，下载后将device-js-txt重命名为device-js" class="headerlink" title="由于格式限制，下载后将device.js.txt重命名为device.js"></a>由于格式限制，下载后将<code>device.js.txt</code>重命名为<code>device.js</code></h5></blockquote>
-<h4 id="方法二：（推荐）"><a href="#方法二：（推荐）" class="headerlink" title="方法二：（推荐）"></a>方法二：（推荐）</h4><p>如果你的ICQQ版本≤0.6.10，使用高于9.17签名的时候，请进入fish（cmd），cd到崽的目录下，执行以下命令</p>
-<pre><code class="bash">curl -sSL Qsign.icu/ver |bash
+<h5 id="然后配置-bot-yaml-文件点我跳转"><a href="#然后配置-bot-yaml-文件点我跳转" class="headerlink" title="然后配置 bot.yaml 文件点我跳转"></a>然后配置 <code>bot.yaml</code> 文件<a href="#length">点我跳转</a></h5><hr>
+<h4 id="方法二：（-使用一键脚本-）"><a href="#方法二：（-使用一键脚本-）" class="headerlink" title="方法二：（ 使用一键脚本 ）"></a>方法二：（ 使用一键脚本 ）</h4><p>选择你的崽类型执行以下代码</p>
+<ul>
+<li>tsab TRSS-Yunzai</li>
+</ul>
+<pre><code class="bash">tsab c &#39;cd $DIR/TRSS-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash&#39;
 </code></pre>
-<p>后再输入<code>node app</code>进行配置qq号等</p>
-<p>签名地址为<code>https://hlhs-nb.cn/signed/?key=114514</code></p>
-<p>如果你已经配置完毕，请在云崽根目录打开cmd后进行以上操作，重新配置</p>
+<ul>
+<li>tsab Miao-Yunzai</li>
+</ul>
+<pre><code class="bash">tsab c &#39;cd $DIR/Miao-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash&#39;
+</code></pre>
+<ul>
+<li>bash</li>
+</ul>
+<pre><code class="bash">cd 崽的目录
+
+curl -sSL Qsign.icu/ver |bash
+</code></pre>
+<ul>
+<li>白狐脚本 Miao-Yunzai</li>
+</ul>
+<pre><code class="bash">cd /root/Miao-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash
+</code></pre>
+<ul>
+<li>白狐脚本 TRSS-Yunzai</li>
+</ul>
+<pre><code class="bash">cd /root/TRSS-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash
+</code></pre>
+<blockquote>
+<p>脚本一键配置会自动添加签名版本？应该是这样的</p>
+</blockquote>
 <hr>
-<h2 id="签名使用方法："><a href="#签名使用方法：" class="headerlink" title="签名使用方法："></a>签名使用方法：</h2><h3 id="Miao-Yunzai修改方法"><a href="#Miao-Yunzai修改方法" class="headerlink" title="Miao-Yunzai修改方法"></a>Miao-Yunzai修改方法</h3><p>打开<code>Miao-Yunzai/config/config/bot.yaml</code></p>
+<h2 id="签名配置方法："><a href="#签名配置方法：" class="headerlink" title="签名配置方法："></a><a id="length">签名配置方法：</a></h2><h3 id="Miao-Yunzai修改方法"><a href="#Miao-Yunzai修改方法" class="headerlink" title="Miao-Yunzai修改方法"></a>Miao-Yunzai修改方法</h3><p>打开<code>Miao-Yunzai/config/config/bot.yaml</code></p>
 <p>在文件的末尾我们可以看到如下</p>
 <pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)
 sign_api_addr:
 # 传入的QQ版本(如:8.9.63、8.9.68)
 ver:
 </code></pre>
-<p>按以下格式填入</p>
-<pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)
-sign_api_addr:
-# 传入的QQ版本(如:8.9.63、8.9.68)
-ver:
+<p>按以下格式填入（可以直接复制粘贴我的）</p>
+<pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)（填你要用的API）
+sign_api_addr: https://hlhs-nb.cn/signed/?key=114514
+# 传入的QQ版本(如:8.9.63、8.9.68)（可填可不填，选择你要的版本）
+ver: 
 </code></pre>
 <hr>
 <h2 id="Qsign签名API大全（-截至24-07-19收录-）"><a href="#Qsign签名API大全（-截至24-07-19收录-）" class="headerlink" title="Qsign签名API大全（ 截至24-07-19收录 ）"></a>Qsign签名API大全<code>（ 截至24-07-19收录 ）</code></h2><ul>
