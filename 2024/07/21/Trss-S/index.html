@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>文本文档整蛊源码 | Jiaozi の 小窝</title>
+        <title>使用TRSS Scripty一键部署云崽 | Jiaozi の 小窝</title>
         <meta name="author" content="Jiaozi" />
         <meta name="description" content="欢迎光临" />
         <meta name="keywords" content="" />
@@ -193,22 +193,22 @@
                 <div id="main" v-show="!loading">
                     <div class="article">
     <div>
-        <h1>文本文档整蛊源码</h1>
+        <h1>使用TRSS Scripty一键部署云崽</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/7/22
+            2024/7/21
         </span>
         
         <span class="category">
-            <a href="/categories/%E4%BB%A3%E7%A0%81/">
+            <a href="/categories/Yunzai/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                代码
+                Yunzai
             </a>
         </span>
         
@@ -220,22 +220,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ffa2c4">代码</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/all/" style="color: #03a9f4">all</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/vbs/" style="color: #03a9f4">vbs</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/bat/" style="color: #00bcd4">bat</a>
+                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
             </span>
             
         </span>
@@ -243,75 +228,84 @@
     </div>
     
     <div class="content" v-pre>
-        <h3 id="以下代码均需要更改文件后缀名"><a href="#以下代码均需要更改文件后缀名" class="headerlink" title="以下代码均需要更改文件后缀名"></a>以下代码均需要更改文件后缀名</h3><hr>
-<h4 id="1-许多磁盘"><a href="#1-许多磁盘" class="headerlink" title="1.许多磁盘"></a>1.许多磁盘</h4><pre><code class="bat">@echo off
-for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: C:\)
-</code></pre>
-<p>解除方法</p>
-<pre><code class="bat">@echo off
-for %%i in (a b c d e f g h i j k l m n o p q r s t u v w x y z) do (subst %%i: /d)
-</code></pre>
+        <h2 id="本文支持的平台-点击阅读全文可快速选择你要的平台"><a href="#本文支持的平台-点击阅读全文可快速选择你要的平台" class="headerlink" title="本文支持的平台(点击阅读全文可快速选择你要的平台)"></a>本文支持的平台(点击阅读全文可快速选择你要的平台)</h2><ul>
+<li><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a><a href="#W">Windows</a></h3></li>
+<li><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a><a href="#L">Linux</a></h3></li>
+</ul>
 <span id="more"></span>
 
 <hr>
-<h4 id="2-无尽语音报数"><a href="#2-无尽语音报数" class="headerlink" title="2.无尽语音报数"></a>2.无尽语音报数</h4><pre><code class="vbs">Set s = CreateObject(&quot;sapi.spvoice&quot;)
-i=0
-do
-s.speak i
-i=i+1
-loop
+<hr>
+<h1 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a><a id="W">Windows</a></h1><h2 id="使用MSYS2部署云崽"><a href="#使用MSYS2部署云崽" class="headerlink" title="使用MSYS2部署云崽"></a>使用MSYS2部署云崽</h2><h3 id="MSYS2-安装"><a href="#MSYS2-安装" class="headerlink" title="MSYS2 安装"></a>MSYS2 安装</h3><ul>
+<li><h3 id="MSYS2-官网"><a href="#MSYS2-官网" class="headerlink" title="MSYS2 官网"></a>MSYS2 官网</h3></li>
+<li><h3 id="MSYS2-安装程序"><a href="#MSYS2-安装程序" class="headerlink" title="MSYS2 安装程序"></a>MSYS2 安装程序</h3></li>
+</ul>
+<blockquote>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><h4 id="若速度太慢，可使用-GitHub-加速，如：GitHub-Proxy"><a href="#若速度太慢，可使用-GitHub-加速，如：GitHub-Proxy" class="headerlink" title="若速度太慢，可使用 GitHub 加速，如：GitHub Proxy"></a>若速度太慢，可使用 GitHub 加速，如：GitHub Proxy</h4></blockquote>
+<h3 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h3><h3 id="打开MSYS2安装的根目录，运行-msys2-exe（紫色的那个）"><a href="#打开MSYS2安装的根目录，运行-msys2-exe（紫色的那个）" class="headerlink" title="打开MSYS2安装的根目录，运行 msys2.exe（紫色的那个）"></a>打开MSYS2安装的根目录，运行 <code>msys2.exe</code>（紫色的那个）</h3><pre><code class="bash">bash &lt;(curl -L gitee.com/TimeRainStarSky/TRSS_AllBot/raw/main/Install.sh)
 </code></pre>
 <blockquote>
-<p>如果想关闭的话就打开任务管理器，将其中的Microsoft Windows Based……关闭</p>
-</blockquote>
-<hr>
-<h4 id="3-无限弹窗"><a href="#3-无限弹窗" class="headerlink" title="3.无限弹窗"></a>3.无限弹窗</h4><pre><code class="vbs">do 
-msgbox (&quot;自定义内容&quot;) 
-loop
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><h4 id="首次安装可能会自动关闭，再次启动即可"><a href="#首次安装可能会自动关闭，再次启动即可" class="headerlink" title="首次安装可能会自动关闭，再次启动即可"></a>首次安装可能会自动关闭，再次启动即可</h4></blockquote>
+<h5 id="机器人会安装在-MYSY2-home-用户-TRSS-AllBot"><a href="#机器人会安装在-MYSY2-home-用户-TRSS-AllBot" class="headerlink" title="机器人会安装在 MYSY2\home\用户\TRSS_AllBot"></a>机器人会安装在 <code>MYSY2\home\用户\TRSS_AllBot</code></h5><hr>
+<h1 id="Linux-1"><a href="#Linux-1" class="headerlink" title="Linux"></a><a id="L">Linux</a></h1><h2 id="系统推荐-按顺序"><a href="#系统推荐-按顺序" class="headerlink" title="系统推荐 ( 按顺序 )"></a>系统推荐 ( 按顺序 )</h2><ul>
+<li><p>Arch Linux</p>
+</li>
+<li><p>Debian12</p>
+</li>
+<li><p>Ubuntu22</p>
+</li>
+<li><p>CentOS</p>
+</li>
+</ul>
+<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><pre><code class="bash">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)
 </code></pre>
 <blockquote>
-<p>如果想关闭的话就打开任务管理器，将其中的Microsoft Windows Based……关闭</p>
+<p>不会用<a target="_blank" rel="noopener" href="https://www.xiaojiaozi.top/2024/07/20/LinuxYun1/">点击这里</a></p>
 </blockquote>
-<hr>
-<h4 id="4-电脑直接蓝屏"><a href="#4-电脑直接蓝屏" class="headerlink" title="4.电脑直接蓝屏"></a>4.电脑直接蓝屏</h4><pre><code class="bat">taskkill /f /fi &quot;pid ne 1&quot;
+<h2 id="Arch-Linux安装云崽-不是Arch-Linux请看下一条"><a href="#Arch-Linux安装云崽-不是Arch-Linux请看下一条" class="headerlink" title="Arch Linux安装云崽 不是Arch Linux请看下一条"></a>Arch Linux安装云崽 <code>不是Arch Linux请看下一条</code></h2><pre><code class="bash">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)
 </code></pre>
-<blockquote>
-<p>保存为Bat，运行（一些杀毒软件会报告为木马）</p>
-</blockquote>
-<hr>
-<h4 id="5-我是猪"><a href="#5-我是猪" class="headerlink" title="5.我是猪"></a>5.我是猪</h4><pre><code class="vbs">set ws=createobject(&quot;wscript.shell&quot;)
-call shutdown(1)
-do while a&lt;&gt;&quot;我是猪&quot;
-a=inputbox(&quot;快在下面的框框里输入我是猪,否则后果自负，快输&quot;&quot;我是猪&quot;&quot; &quot;,&quot;输不输&quot;,&quot;&quot;)
-loop
-call shutdown(2)
-msgbox &quot;早说就行了嘛&quot;,4096+64
-msgbox&quot;再输一遍我是猪!&quot;,4096+64
-msgbox&quot;我是猪!&quot;,4096+64
-MsgBox&quot;最后一次!&quot;,4096+64
-MsgBox&quot;如果你很快的点过去,不看的话&quot;,4096+64
-MsgBox&quot;我就要你踩我空间的!哼!&quot;,4096+64
-MsgBox&quot;从前有座山!&quot;,4096+64
-MsgBox&quot;山里有个庙.&quot;,4096+64
-MsgBox&quot;庙里有个老和尚在讲故事.&quot;,4096+64
-ws.run&quot;iexplore.exe http://new.qzone.qq.com/137841986/infocenter&quot;
-msgbox&quot;哎呀累了！数绵羊哄我睡觉&quot;,4096+64
-for i=1 to 100
-MsgBox i&amp;&quot;只绵羊&quot;,4096+64
-next
-msgbox&quot;哎呀我困了，这次就饶过你吧，下次注意哦!&quot;,4096+64
-msgbox&quot;最后问个问题，我是不是大好人！&quot;,4096+64
-if inputbox(&quot;是不是&quot;,&quot;请选择&quot;,&quot;是&quot;)&lt;&gt;&quot;是&quot; then
-call shutdown(1)
-end if
-sub shutdown(s)
-select case s
-case 1
-ws.run&quot;cmd.exe /c shutdown -r -t 60 -c&quot;,0
-case 2
-ws.run&quot;cmd.exe /c shutdown -a&quot;,0
-end select
-end sub
+<h2 id="使用Docker安装云崽-Debian12-Ubuntu22-CentOS"><a href="#使用Docker安装云崽-Debian12-Ubuntu22-CentOS" class="headerlink" title="使用Docker安装云崽 Debian12/Ubuntu22/CentOS"></a>使用Docker安装云崽 <code>Debian12/Ubuntu22/CentOS</code></h2><pre><code class="bash">bash &lt;(curl -L gitee.com/TimeRainStarSky/TRSS_AllBot/raw/main/Install-Docker.sh)
+</code></pre>
+<h2 id="容器管理"><a href="#容器管理" class="headerlink" title="容器管理"></a>容器管理</h2><ul>
+<li>查看容器</li>
+</ul>
+<pre><code class="sh">docker ps -as
+</code></pre>
+<ul>
+<li>启动容器</li>
+</ul>
+<pre><code class="sh">docker start 容器名 # 默认开机自启，无需手动启动
+</code></pre>
+<ul>
+<li>重启容器</li>
+</ul>
+<pre><code class="sh">docker restart -t0 容器名
+</code></pre>
+<ul>
+<li>停止容器</li>
+</ul>
+<pre><code class="sh">docker stop -t0 容器名
+</code></pre>
+<ul>
+<li>删除容器</li>
+</ul>
+<pre><code class="sh">docker rm -f 容器名
+</code></pre>
+<ul>
+<li>重建容器</li>
+</ul>
+<pre><code class="sh">docker run -itd
+  -h 主机名
+  --name 容器名
+  -v 数据路径:/root/项目名
+  --restart always #自启动
+  -p 主机端口:容器端口 #端口映射
+  镜像名
+</code></pre>
+<h4 id="服务器-Linux-发行版-推荐使用-Debian-11-以上"><a href="#服务器-Linux-发行版-推荐使用-Debian-11-以上" class="headerlink" title="服务器 Linux 发行版 推荐使用 Debian 11 以上"></a>服务器 Linux 发行版 推荐使用 <code>Debian 11</code> 以上</h4><h5 id="若只有-Debian-10-以下，可执行以下命令并重启服务器后升级到-Debian-12"><a href="#若只有-Debian-10-以下，可执行以下命令并重启服务器后升级到-Debian-12" class="headerlink" title="若只有 Debian 10 以下，可执行以下命令并重启服务器后升级到 Debian 12"></a>若只有 <code>Debian 10</code> 以下，可执行以下命令并重启服务器后升级到 <code>Debian 12</code></h5><pre><code class="sh">echo &#39;deb http://ftp.cn.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb http://ftp.cn.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+deb http://ftp.cn.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware&#39;&gt;/etc/apt/sources.list
+apt update &amp;&amp; apt full-upgrade -y &amp;&amp; apt autoremove --purge -y &amp;&amp; apt clean
 </code></pre>
 
     </div>
