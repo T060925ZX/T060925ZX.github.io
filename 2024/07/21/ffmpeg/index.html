@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>QSign | Jiaozi の 小窝</title>
+        <title>配置 FFmpeg | Jiaozi の 小窝</title>
         <meta name="author" content="Jiaozi" />
         <meta name="description" content="欢迎光临" />
         <meta name="keywords" content="" />
@@ -193,14 +193,14 @@
                 <div id="main" v-show="!loading">
                     <div class="article">
     <div>
-        <h1>QSign</h1>
+        <h1>配置 FFmpeg</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/7/19
+            2024/7/21
         </span>
         
         <span class="category">
@@ -220,17 +220,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/Node/" style="color: #ffa2c4">Node</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/Git/" style="color: #00bcd4">Git</a>
+                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ffa2c4">代码</a>
             </span>
             
         </span>
@@ -238,132 +228,57 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Yunzai问题解决方案-Qsign"><a href="#Yunzai问题解决方案-Qsign" class="headerlink" title="Yunzai问题解决方案 Qsign"></a>Yunzai问题解决方案 Qsign</h1><blockquote>
-<p>环境准备： 部署好的Yunzai-Bot</p>
-</blockquote>
+        <p>如果你机器人无法发送 <code>语言、视频</code> </p>
+<p>请依照本教程配置<code>FFmpeg</code></p>
 <span id="more"></span>
 
-<blockquote>
-<h1 id="本文所以内容均不允许以任何形式传入国内流量平台"><a href="#本文所以内容均不允许以任何形式传入国内流量平台" class="headerlink" title="本文所以内容均不允许以任何形式传入国内流量平台"></a>本文所以内容均不允许以任何形式传入国内流量平台</h1><h2 id="如：哔哩哔哩等"><a href="#如：哔哩哔哩等" class="headerlink" title="如：哔哩哔哩等"></a>如：哔哩哔哩等</h2></blockquote>
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><blockquote>
-<p>提示：要先修改设备文件以兼容高版本签名<code>9.0.17+</code></p>
-</blockquote>
 <hr>
-<h4 id="方法一：（-此方法仅适用于喵崽-）"><a href="#方法一：（-此方法仅适用于喵崽-）" class="headerlink" title="方法一：（ 此方法仅适用于喵崽 ）"></a>方法一：（ 此方法仅适用于喵崽 ）</h4><blockquote>
-<p>将下载的文件放入<code>Miao-Yunzai\node_modules\icqq\lib\core\device.js</code>替换掉原来的<code>device.js</code> </p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://wwt.lanzouv.com/icSF624zhaod">点击这里下载文件</a></p>
+<hr>
+<h1 id="FFmpeg-是什么？"><a href="#FFmpeg-是什么？" class="headerlink" title="FFmpeg 是什么？"></a>FFmpeg 是什么？</h1><p>FFmpeg 是知名的开源音视频处理库，被用于许多音视频编解码相关的项目中。</p>
+<hr>
+<h1 id="为什么要使用-FFmpeg？"><a href="#为什么要使用-FFmpeg？" class="headerlink" title="为什么要使用 FFmpeg？"></a>为什么要使用 FFmpeg？</h1><p>本项目使用 FFmpeg 是为了编解码语音和视频，以使 LLOneBot 以 QQ 支持的格式处理语音和视频文件。</p>
+<p>如果你的 Bot 没有处理语音和视频的需求，可以选择不安装 FFmpeg。</p>
+<hr>
+<h1 id="安装-FFmpeg"><a href="#安装-FFmpeg" class="headerlink" title="安装 FFmpeg"></a>安装 FFmpeg</h1><h2 id="Windows-系统"><a href="#Windows-系统" class="headerlink" title="Windows 系统"></a>Windows 系统</h2><p>在 <a target="_blank" rel="noopener" href="https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essentials.7z">此处</a> 下载官方许可的 FFmpeg；</p>
+<p>将其中的文件夹解压至一个你知道的地方（例如 C:\Program Files），然后重命名为 ffmpeg；</p>
+<p>你的 ffmpeg 文件夹的结构看起来应该是这样的：</p>
+<pre><code class="json5">ffmpeg
+|___bin
+|___|___ffmpeg.exe
+|___|___ffplay.exe
+|___\___ffprobe.exe
+|___doc
+|___\ ...
+|___LICENSE
+\___README.txt
+</code></pre>
 <blockquote>
-<h5 id="由于格式限制，下载后将device-js-txt重命名为device-js"><a href="#由于格式限制，下载后将device-js-txt重命名为device-js" class="headerlink" title="由于格式限制，下载后将device.js.txt重命名为device.js"></a>由于格式限制，下载后将<code>device.js.txt</code>重命名为<code>device.js</code></h5></blockquote>
-<h5 id="然后配置-bot-yaml-文件点我跳转"><a href="#然后配置-bot-yaml-文件点我跳转" class="headerlink" title="然后配置 bot.yaml 文件点我跳转"></a>然后配置 <code>bot.yaml</code> 文件<a href="#length">点我跳转</a></h5><hr>
-<h4 id="方法二：（-使用一键脚本-）"><a href="#方法二：（-使用一键脚本-）" class="headerlink" title="方法二：（ 使用一键脚本 ）"></a>方法二：（ 使用一键脚本 ）</h4><p>选择你的崽类型执行以下代码</p>
-<ul>
-<li>tsab TRSS-Yunzai</li>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><h4 id="请一定要保证-bin-文件夹内同时包含-ffmpeg-exe、ffplay-exe-以及-ffprobe-exe！-否则会产生意想不到的错误。"><a href="#请一定要保证-bin-文件夹内同时包含-ffmpeg-exe、ffplay-exe-以及-ffprobe-exe！-否则会产生意想不到的错误。" class="headerlink" title="请一定要保证 bin 文件夹内同时包含 ffmpeg.exe、ffplay.exe 以及 ffprobe.exe！ 否则会产生意想不到的错误。"></a>请一定要保证 <code>bin</code> 文件夹内同时包含 <code>ffmpeg.exe</code>、<code>ffplay.exe</code> 以及 <code>ffprobe.exe</code>！ 否则会产生意想不到的错误。</h4></blockquote>
+<hr>
+<h1 id="配置-FFmpeg"><a href="#配置-FFmpeg" class="headerlink" title="配置 FFmpeg"></a>配置 FFmpeg</h1><ol>
+<li><p>启动 <code>QQNT</code>，前往 <code>LLOneBot</code> 设置页，选择 <code>FFmpeg</code> 为刚才解压的 <code>ffmpeg.exe</code>（在本例中，<code>FFmpeg</code> 主程序位于 <code>C:\Program Files\ffmpeg\bin\ffmpeg.exe）</code>， 然后点击「保存」按钮；</p>
+</li>
+<li><p>如果没有任何错误出现，说明 <code>FFmpeg</code> 已经配置成功了。恭喜你！</p>
+</li>
+</ol>
+<blockquote>
+<h3 id="如果有其他程序也需要使用-FFmpeg"><a href="#如果有其他程序也需要使用-FFmpeg" class="headerlink" title="如果有其他程序也需要使用 FFmpeg"></a>如果有其他程序也需要使用 FFmpeg</h3><ul>
+<li><p>如果其他程序支持手动选择 FFmpeg 位置，只需选择为 LLOneBot 所使用的 FFmpeg 即可。</p>
+</li>
+<li><p>如果其他程序不支持手动选择 FFmpeg 位置，只需将 FFmpeg 的 bin 目录注册到系统的 PATH 变量中（可参考 此教程）即可。</p>
+</li>
+<li><p>如果你将 FFmpeg 安装到了系统变量中，那么无论有没有在 LLOneBot 中配置 FFmpeg 路径也可以正常使用 FFmpeg。</p>
+</li>
 </ul>
-<pre><code class="bash">tsab c &#39;cd $DIR/TRSS-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash&#39;
-</code></pre>
-<ul>
-<li>tsab Miao-Yunzai</li>
-</ul>
-<pre><code class="bash">tsab c &#39;cd $DIR/Miao-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash&#39;
-</code></pre>
-<ul>
-<li>bash</li>
-</ul>
-<pre><code class="bash">cd 崽的目录
+</blockquote>
+<h2 id="Linux-系统"><a href="#Linux-系统" class="headerlink" title="Linux 系统"></a>Linux 系统</h2><p>请使用你所使用的系统的包管理器直接安装 ffmpeg 即可正常使用。</p>
+<pre><code class="bash">sudo apt update
 
-curl -sSL Qsign.icu/ver |bash
-</code></pre>
-<ul>
-<li>白狐脚本 Miao-Yunzai</li>
-</ul>
-<pre><code class="bash">cd /root/Miao-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash
-</code></pre>
-<ul>
-<li>白狐脚本 TRSS-Yunzai</li>
-</ul>
-<pre><code class="bash">cd /root/TRSS-Yunzai &amp;&amp; curl -sSL QSign.icu/X | bash
+sudo apt install ffmpeg
 </code></pre>
 <blockquote>
-<p>脚本一键配置会自动添加签名版本？应该是这样的</p>
+<p>不会用请联系：1602833550（QQ&#x2F;微信同号）</p>
 </blockquote>
-<hr>
-<h2 id="签名配置方法："><a href="#签名配置方法：" class="headerlink" title="签名配置方法："></a><a id="length">签名配置方法：</a></h2><h5 id="点击这里看公共签名"><a href="#点击这里看公共签名" class="headerlink" title="点击这里看公共签名"></a><a href="#qianming">点击这里</a>看公共签名</h5><h3 id="Miao-Yunzai修改方法"><a href="#Miao-Yunzai修改方法" class="headerlink" title="Miao-Yunzai修改方法"></a>Miao-Yunzai修改方法</h3><p>打开<code>Miao-Yunzai/config/config/bot.yaml</code></p>
-<p>在文件的末尾我们可以看到如下</p>
-<pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)
-sign_api_addr:
-# 传入的QQ版本(如:8.9.63、8.9.68)
-ver:
-</code></pre>
-<p>按以下格式填入（可以直接复制粘贴我的）</p>
-<pre><code class="yaml"># 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)（填你要用的API）
-sign_api_addr: https://hlhs-nb.cn/signed/?key=114514
-# 传入的QQ版本(如:8.9.63、8.9.68)（可填可不填，选择你要的版本）
-ver: 
-</code></pre>
-<h3 id="TRSS-Yunzai修改方法"><a href="#TRSS-Yunzai修改方法" class="headerlink" title="TRSS-Yunzai修改方法"></a>TRSS-Yunzai修改方法</h3><p>打开<code>TRSS-Yunzai/config/ICQQ.yaml</code></p>
-<pre><code class="yaml">tips:
-  - 欢迎使用 TRSS-Yunzai ICQQ Plugin ! 作者：时雨🌌星空
-  - 参考：https://github.com/TimeRainStarSky/Yunzai-ICQQ-Plugin
-permission: master
-markdown:
-  mode: false
-  button: false
-  callback: true
-bot:
-  sign_api_addr: https://hlhs-nb.cn/signed/?key=114514
-token: []
-</code></pre>
-<p>按以下格式填入（可以直接复制粘贴我的,自己修改）</p>
-<pre><code class="yaml">tips:
-  - 欢迎使用 TRSS-Yunzai ICQQ Plugin ! 作者：时雨🌌星空
-  - 参考：https://github.com/TimeRainStarSky/Yunzai-ICQQ-Plugin
-permission: master
-markdown:
-  mode: false
-  button: false
-  callback: true
-bot:
-  sign_api_addr: https://hlhs-nb.cn/signed/?key=114514
-token:
-    #QQ号:密码(留空扫码):登录设备(1安卓手机 2apad 3手表):版本号:独立签名地址
-  - 123456789:987654321:1
-  - 123456789:987654321:2
-  - 123456789:3
-  - 123456789:987654321:2:9.0.70:https://hlhs-nb.cn/signed/?key=114514
-</code></pre>
-<hr>
-<h2 id="Qsign签名API大全（-截至24-07-19收录-）"><a href="#Qsign签名API大全（-截至24-07-19收录-）" class="headerlink" title="Qsign签名API大全（ 截至24-07-19收录 ） "></a><a id="qianming">Qsign签名API大全<code>（ 截至24-07-19收录 ）</code> </a></h2><ul>
-<li><h4 id="9-0-签名（强烈推荐：根据ICQQ版本自动获取签名版本）"><a href="#9-0-签名（强烈推荐：根据ICQQ版本自动获取签名版本）" class="headerlink" title="9.0.**签名（强烈推荐：根据ICQQ版本自动获取签名版本）"></a>9.0.**签名（强烈推荐：根据ICQQ版本自动获取签名版本）</h4></li>
-</ul>
-<pre><code class="yaml">https://hlhs-nb.cn/signed/?key=114514
-</code></pre>
-<ul>
-<li><h4 id="9-0-8签名"><a href="#9-0-8签名" class="headerlink" title="9.0.8签名"></a>9.0.8签名</h4></li>
-</ul>
-<pre><code class="yaml">http://47.108.180.154:908?key=114514
-</code></pre>
-<ul>
-<li><h4 id="9-0-17签名"><a href="#9-0-17签名" class="headerlink" title="9.0.17签名"></a>9.0.17签名</h4></li>
-</ul>
-<pre><code class="yaml">http://47.108.180.154:9017?key=114514
-</code></pre>
-<ul>
-<li><h4 id="时雨的白名单签名（需要加群659945190，私聊群主获取授权白名单）"><a href="#时雨的白名单签名（需要加群659945190，私聊群主获取授权白名单）" class="headerlink" title="时雨的白名单签名（需要加群659945190，私聊群主获取授权白名单）"></a>时雨的白名单签名<code>（需要加群659945190，私聊群主获取授权白名单）</code></h4></li>
-</ul>
-<pre><code class="yaml">http://gz.console.microgg.cn:2536
-</code></pre>
-<ul>
-<li><h4 id="9-0-56签名-9-0-75签名"><a href="#9-0-56签名-9-0-75签名" class="headerlink" title="9.0.56签名 9.0.75签名"></a><del>9.0.56签名</del> 9.0.75签名</h4></li>
-</ul>
-<h5 id="无key"><a href="#无key" class="headerlink" title="无key"></a>无key</h5><pre><code class="yaml">https://qsign.trpgbot.com
-</code></pre>
-<pre><code class="yaml">https://qsign-v4.trpgbot.com
-</code></pre>
-<h5 id="有key"><a href="#有key" class="headerlink" title="有key"></a>有key</h5><pre><code class="yaml">https://sbtx.f3.ttvt.cc?key=miraibbs
-</code></pre>
-<pre><code class="yaml">https://qsign.chahuyun.cn?key=miraibbs
-</code></pre>
 
     </div>
     
