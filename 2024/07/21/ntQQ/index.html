@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>NTQQ部署教程 | Jiaozi の 小窝</title>
+        <meta name="author" content="Jiaozi" />
+        <meta name="description" content="欢迎光临" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        
+        
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+
+
+
+
+
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>JIAOZI の 小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories/Hello">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags/all">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/music">
+            <i class="fa-solid fa-music fa-fw"></i>
+            <span>&ensp;Music</span>
+        </a>
+        
+        <a href="/link">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Link</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;JIAOZI の 小窝</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories/Hello">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags/all">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <a href="/music">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-music fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Music</div>
+                    </div>
+                </a>
+                
+                <a href="/link">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-link fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Link</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div class="article">
+    <div>
+        <h1>NTQQ部署教程</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/7/21
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Yunzai/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Yunzai
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">代码</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>本文是NTQQ部署教程以及NTQQ接入Yunzai，Nonebot教程</p>
+<span id="more"></span>
+
+<hr>
+<hr>
+<h2 id="本文支持的平台-点击可快速跳转"><a href="#本文支持的平台-点击可快速跳转" class="headerlink" title="本文支持的平台 ( 点击可快速跳转 )"></a>本文支持的平台 ( 点击可快速跳转 )</h2><ul>
+<li><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a><a href="#W">Windows</a></h3></li>
+<li><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a><a href="#L">Linux</a></h3></li>
+<li><h3 id="已经完整安装点击这里"><a href="#已经完整安装点击这里" class="headerlink" title="已经完整安装点击这里"></a><a href="#p">已经完整安装点击这里</a></h3></li>
+</ul>
+<hr>
+<h1 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a><a id="W">Windows</a></h1><h3 id="Windows推荐使用-llonebot-可人机合一"><a href="#Windows推荐使用-llonebot-可人机合一" class="headerlink" title="Windows推荐使用 llonebot 可人机合一"></a>Windows推荐使用 <a target="_blank" rel="noopener" href="https://llonebot.github.io/zh-CN/">llonebot</a> <code>可人机合一</code></h3><blockquote>
+<p>有公网IP推荐使用挂机宝部署</p>
+</blockquote>
+<h4 id="Windows-用户一键安装方案"><a href="#Windows-用户一键安装方案" class="headerlink" title="Windows 用户一键安装方案"></a>Windows 用户一键安装方案</h4><p><a target="_blank" rel="noopener" href="https://github.com/super1207/install_llob/releases">前往这里</a>下载exe，双击运行即可，之后打开QQ的设置，看到了 LLOneBot 就代表安装成功了.</p>
+<blockquote>
+<p>上不去就挂梯子</p>
+</blockquote>
+<hr>
+<h1 id="Linux-1"><a href="#Linux-1" class="headerlink" title="Linux"></a><a id="L">Linux</a></h1><h3 id="Linux推荐使用-Napcat"><a href="#Linux推荐使用-Napcat" class="headerlink" title="Linux推荐使用 Napcat"></a>Linux推荐使用 <a target="_blank" rel="noopener" href="https://napneko.github.io/zh-CN/">Napcat</a></h3><h2 id="Napcat"><a href="#Napcat" class="headerlink" title="Napcat"></a>Napcat</h2><p>NapCatQQ 是基于 PC NTQQ 客户端本体实现的 QQ Bot 框架，稳定安全，快速部署。</p>
+<h3 id="NapCatQQ-的优势"><a href="#NapCatQQ-的优势" class="headerlink" title="NapCatQQ 的优势"></a>NapCatQQ 的优势</h3><ul>
+<li><p>不需要图形环境，Linux表现优异，与现有Hook框架有着本质区别，在性能与内存占用方面远远优于基于Hook的框架。</p>
+</li>
+<li><p>配置简单，支持浏览器远程进入进行配置，简单轻松即可完成配置。</p>
+</li>
+<li><p>NTQQ功能适配快速，更新持续跟进QQ最新版。</p>
+</li>
+</ul>
+<h3 id="启动前需要了解的三两事-！你给我好好读三遍"><a href="#启动前需要了解的三两事-！你给我好好读三遍" class="headerlink" title="启动前需要了解的三两事 (！你给我好好读三遍)"></a>启动前需要了解的三两事 (！你给我好好读三遍)</h3><blockquote>
+<h3 id="WARNING"><a href="#WARNING" class="headerlink" title="WARNING"></a>WARNING</h3><ul>
+<li>NapCat 是基于 PC NTQQ 客户端本体实现的 QQ Bot 框架，所以说需要提前安装好和 NapCatQQ 对应的 QQ 版本才能运行 NapCat。</li>
+<li>NapCat 在线时，你不能使用 PC QQ 客户端实现人机合一，但是可以选择同步登录移动客户端，如果想要在 PC 上人机合一请使用 LLOneBot</li>
+<li>NapCat 不同于协议实现，是基于 QQ 客户端，QQ 客户端上干不了的事，NapCat &gt;_&lt; 当然也是不行的!</li>
+</ul>
+</blockquote>
+<h2 id="下载-NapCatQQ"><a href="#下载-NapCatQQ" class="headerlink" title="下载 NapCatQQ"></a>下载 NapCatQQ</h2><p>下载地址: <a target="_blank" rel="noopener" href="https://github.com/NapNeko/NapCatQQ/releases">https://github.com/NapNeko/NapCatQQ/releases</a></p>
+<h2 id="Linux一键脚本"><a href="#Linux一键脚本" class="headerlink" title="Linux一键脚本"></a>Linux一键脚本</h2><h4 id="该脚本仅支持docker模式-Linux-Docker"><a href="#该脚本仅支持docker模式-Linux-Docker" class="headerlink" title="该脚本仅支持docker模式 Linux Docker"></a>该脚本仅支持docker模式 <a target="_blank" rel="noopener" href="https://github.com/NapNeko/NapCat-Docker">Linux Docker</a></h4><pre><code class="bash">curl -o napcat.sh https://fastly.jsdelivr.net/gh/NapNeko/NapCat-Installer@master/script/install.sh &amp;&amp; sudo bash napcat.sh
+</code></pre>
+<h2 id="使用安装包下载NapCat"><a href="#使用安装包下载NapCat" class="headerlink" title="使用安装包下载NapCat"></a>使用安装包下载NapCat</h2><pre><code class="bash">#安装NapCat的安装包，其他版本前往https://github.com/NapNeko/NapCatQQ/releases查看
+
+wget -O napcat.zip https://github.com/NapNeko/NapCatQQ/releases/download/v1.6.7/NapCat.linux.x64.zip
+
+sudo apt update
+
+#下载解压工具
+sudo apt install unzip
+
+#创建临时目录
+mkdir -p temp_unzip
+
+#解压缩文件到临时目录
+unzip napcat.zip -d temp_unzip
+
+mkdir -p NapCat
+
+#将内容移动到目标目录
+mv temp_unzip/NapCat.linux.x64/* NapCat/
+
+#删除临时目录
+rm -r temp_unzip
+</code></pre>
+<h2 id="启动NapCat"><a href="#启动NapCat" class="headerlink" title="启动NapCat"></a>启动NapCat</h2><pre><code class="bash">bash ./NapCat/napcat.sh
+</code></pre>
+<p>如果你已经成功登录过官方 QQ 或者 NapCatQQ，可以加参数 -q &lt;你的QQ&gt; 进行快速登录而无需扫码，如 </p>
+<pre><code class="bash">bash ./NapCat/napcat.sh -q 1234567
+</code></pre>
+<hr>
+<hr>
+<h1 id="配置ws连接Yunzai和Nonebot"><a href="#配置ws连接Yunzai和Nonebot" class="headerlink" title="配置ws连接Yunzai和Nonebot"></a><a id="p">配置ws连接Yunzai和Nonebot</a></h1><ul>
+<li><h3 id="llonebot"><a href="#llonebot" class="headerlink" title="llonebot"></a><a href="#llonebot">llonebot</a></h3></li>
+<li><h3 id="NapCat"><a href="#NapCat" class="headerlink" title="NapCat"></a><a href="#NapCat">NapCat</a></h3></li>
+</ul>
+<hr>
+<h1 id="llonebot-1"><a href="#llonebot-1" class="headerlink" title="llonebot"></a><a id="llonebot">llonebot</a></h1><h3 id="打开-QQ-设置-LLOneBot-版本号-启用反向-WebSocket-服务"><a href="#打开-QQ-设置-LLOneBot-版本号-启用反向-WebSocket-服务" class="headerlink" title="打开 QQ &gt; 设置 &gt; LLOneBot 版本号 &gt; 启用反向 WebSocket 服务"></a>打开 QQ &gt; 设置 &gt; LLOneBot 版本号 &gt; 启用反向 WebSocket 服务</h3><ul>
+<li><h3 id="Yunzai"><a href="#Yunzai" class="headerlink" title="Yunzai"></a>Yunzai</h3></li>
+</ul>
+<pre><code class="yaml">ws://127.0.0.1:8080/OneBotv11
+</code></pre>
+<ul>
+<li><h3 id="Nonebot"><a href="#Nonebot" class="headerlink" title="Nonebot"></a>Nonebot</h3></li>
+</ul>
+<pre><code class="yaml">ws://127.0.0.1:8080/onebot/v11/ws
+</code></pre>
+<blockquote>
+<h4 id="将-127-0-0-1-8080-修改成你-服务器的IP-端口"><a href="#将-127-0-0-1-8080-修改成你-服务器的IP-端口" class="headerlink" title="将 127.0.0.1:8080 修改成你 服务器的IP:端口"></a>将 <code>127.0.0.1:8080</code> 修改成你 <code>服务器的IP:端口</code></h4><h4 id="本地可修改为-localhost-端口"><a href="#本地可修改为-localhost-端口" class="headerlink" title="本地可修改为 localhost:端口"></a>本地可修改为 <code>localhost:端口</code></h4></blockquote>
+<hr>
+<h1 id="NapCat-1"><a href="#NapCat-1" class="headerlink" title="NapCat"></a><a id="NapCat">NapCat</a></h1><h2 id="基础配置介绍"><a href="#基础配置介绍" class="headerlink" title="基础配置介绍"></a>基础配置介绍</h2><details>
+
+<summary>用 WebUI 配置</summary>
+
+<p>如果你已经启动了 NapCat，并且有多于 1 个开放端口，则可以通过 WebUI 进行配置。</p>
+<p>默认端口为 6099。当端口被占用时，会自动对端口 +1，直到找到可用端口，端口号会在启动时显示。</p>
+<p>启动后打开 .&#x2F;config&#x2F;webui.json 文件，token 密码可在其中找到。</p>
+<pre><code class="json5">&#123;
+    &quot;port&quot;: 6099, // WebUI 端口
+    &quot;token&quot;: &quot;xxxx&quot;, //登录密钥，默认是自动生成的随机登录密码
+    &quot;loginRate&quot;: 3, //每分钟登录次数限制
+&#125;
+</code></pre>
+<p>访问 <a href="http://IP:端口/webui/login.html，然后进行以下操作：">http://IP:端口/webui/login.html，然后进行以下操作：</a></p>
+<ul>
+<li><p>进入 QQ 登录，点击 QRCode 进行二维码登录。</p>
+</li>
+<li><p>登录成功后，即可修改配置。</p>
+</li>
+<li><p>配置完成后，点击保存，重启即可生效。</p>
+</li>
+</ul>
+<blockquote>
+<h3 id="配置方法参考llonebot"><a href="#配置方法参考llonebot" class="headerlink" title="配置方法参考llonebot"></a>配置方法参考<a href="#llonebot">llonebot</a></h3></blockquote>
+</details>
+
+<details>
+
+<summary>用文件配置 OneBot11设置</summary>
+
+<p>和上面一样，重启登录后配置才能生效。</p>
+<p>打开 NapCat 的 config 目录，找到名为 onebot11_&lt;你的QQ号&gt;.json 的文件，如 onebot11_1234567.json；如果没有此文件可以复制 onebot11.json 重命名为 onebot11_&lt;你的QQ号&gt;.json。</p>
+<p>下面是配置内容参数解释：</p>
+<pre><code class="json5">&#123;
+  &quot;http&quot;: &#123;
+    // 是否启用http服务, true为启动，false为禁用
+    &quot;enable&quot;: false,
+    // HTTP服务监听的 ip 地址，为空则监听所有地址
+    &quot;host&quot;: &quot;&quot;,
+    // http服务端口
+    &quot;port&quot;: 3000,
+    // http上报密钥，可为空
+    &quot;secret&quot;: &quot;&quot;,
+    // 是否启用http心跳
+    &quot;enableHeart&quot;: false,
+    // 是否启用http上报服务
+    &quot;enablePost&quot;: false,
+    // http上报地址, 如[&quot;http://127.0.0.1:8080/onebot/v11/http&quot;]
+    &quot;postUrls&quot;: []
+  &#125;,
+  &quot;ws&quot;: &#123;
+    // 是否启用正向websocket服务
+    &quot;enable&quot;: false,
+    // 正向websocket服务监听的 ip 地址，为空则监听所有地址
+    &quot;host&quot;: &quot;&quot;,
+    // 正向websocket服务端口
+    &quot;port&quot;: 3001
+  &#125;,
+  &quot;reverseWs&quot;: &#123;
+    // 是否启用反向websocket服务
+    &quot;enable&quot;: false,
+    // 反向websocket对接的地址, 如[&quot;ws://127.0.0.1:8080/onebot/v11/ws&quot;]
+    &quot;urls&quot;: []
+  &#125;,
+  &quot;GroupLocalTime&quot;: &#123;
+    &quot;Record&quot;: false,//是否开启本地群聊时间记录
+    &quot;RecordList&quot;: []//开启全部群 [&quot;-1&quot;]  单个群配置 [&quot;11111&quot;] 多个群 [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]
+  &#125;,
+  // 是否开启调试模式，开启后上报消息会携带一个raw字段，为原始消息内容
+  &quot;debug&quot;: false,
+  // ws心跳间隔，单位毫秒
+  &quot;heartInterval&quot;: 30000,
+  // 消息上报格式，array为消息组，string为cq码字符串
+  &quot;messagePostFormat&quot;: &quot;array&quot;,
+  // 是否将本地文件转换为URL，如果获取不到url则使用base64字段返回文件内容
+  &quot;enableLocalFile2Url&quot;: true,
+  // 音乐签名URL，用于处理音乐相关请求
+  &quot;musicSignUrl&quot;: &quot;&quot;,
+  // 是否上报自己发送的消息
+  &quot;reportSelfMessage&quot;: false,
+  // access_token，可以为空
+  &quot;token&quot;: &quot;&quot;
+&#125;
+</code></pre>
+<h3 id="修改方式如下"><a href="#修改方式如下" class="headerlink" title="修改方式如下"></a>修改方式如下</h3><pre><code class="json5">  &quot;reverseWs&quot;: &#123;
+    &quot;enable&quot;: true,
+    &quot;urls&quot;: [
+      // Yunzai
+      &quot;ws://127.0.0.1:8080/OneBotv11&quot;
+      // Nonebot
+      &quot;ws://127.0.0.1:8080/onebot/v11/ws&quot;
+    ]
+  &#125;,
+</code></pre>
+<blockquote>
+<h3 id="ws链接参考llonebot"><a href="#ws链接参考llonebot" class="headerlink" title="ws链接参考llonebot"></a>ws链接参考<a href="#llonebot">llonebot</a></h3></blockquote>
+<blockquote>
+<h3 id="WARNING-1"><a href="#WARNING-1" class="headerlink" title="WARNING"></a>WARNING</h3><h4 id="请勿将注释内容写入配置文件，否则会导致配置文件解析失败。"><a href="#请勿将注释内容写入配置文件，否则会导致配置文件解析失败。" class="headerlink" title="请勿将注释内容写入配置文件，否则会导致配置文件解析失败。"></a>请勿将注释内容写入配置文件，否则会导致配置文件解析失败。</h4></blockquote>
+</details>
+
+
+<details>
+
+<summary>配置 NapCat 其它设置(如果不懂干嘛，不用看啦)</summary>
+启动登录 NapCat 后，打开NapCat的 config 目录，找到名为 napcat_<你的QQ号>.json 的文件，如 napcat_1234567.json。
+
+<p>配置内容参数解释：</p>
+<pre><code class="json5">&#123;
+  // 是否开启文件日志
+  &quot;fileLog&quot;: true,
+  // 是否开启控制台日志
+  &quot;consoleLog&quot;: true,
+  // 日志等级, 可选值: debug, info, error
+  &quot;fileLogLevel&quot;: &quot;debug&quot;,
+  &quot;consoleLogLevel&quot;: &quot;info&quot;
+&#125;
+
+&lt;/details&gt;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            
+            &copy;
+            2023 - 2024 Jiaozi の 小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Jiaozi
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://jiaozi0925.cn/">Jiaozi</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20230599">萌ICP备20230599号</a>
+            
+        </div>
+        
+    </div>
+    <!--添加网站运行时间 -->
+<!--<br/>-->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+
+    function createtime() {
+        var grt = new Date("06/04/2023 12:00:00"); //此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = " 本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<!-- 添加网站运行时间 -->
+
+</footer>
+
+
+
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+
+        
+    </body>
+</html>
+
