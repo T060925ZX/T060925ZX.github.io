@@ -220,7 +220,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #00a596">代码</a>
+                <a href="/tags/%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">代码</a>
             </span>
             
         </span>
@@ -264,35 +264,30 @@
 </ul>
 </blockquote>
 <h2 id="下载-NapCatQQ"><a href="#下载-NapCatQQ" class="headerlink" title="下载 NapCatQQ"></a>下载 NapCatQQ</h2><p>下载地址: <a target="_blank" rel="noopener" href="https://github.com/NapNeko/NapCatQQ/releases">https://github.com/NapNeko/NapCatQQ/releases</a></p>
-<h2 id="Linux一键脚本"><a href="#Linux一键脚本" class="headerlink" title="Linux一键脚本"></a>Linux一键脚本</h2><h4 id="该脚本仅支持docker模式-Linux-Docker"><a href="#该脚本仅支持docker模式-Linux-Docker" class="headerlink" title="该脚本仅支持docker模式 Linux Docker"></a>该脚本仅支持docker模式 <a target="_blank" rel="noopener" href="https://github.com/NapNeko/NapCat-Docker">Linux Docker</a></h4><pre><code class="bash">curl -o napcat.sh https://fastly.jsdelivr.net/gh/NapNeko/NapCat-Installer@master/script/install.sh &amp;&amp; sudo bash napcat.sh
+<h2 id="Linux一键脚本"><a href="#Linux一键脚本" class="headerlink" title="Linux一键脚本"></a>Linux一键脚本</h2><h4 id="安装NapCat"><a href="#安装NapCat" class="headerlink" title="安装NapCat"></a>安装NapCat</h4><pre><code class="bash">curl -o napcat.sh https://fastly.jsdelivr.net/gh/NapNeko/NapCat-Installer@master/script/install.sh &amp;&amp; sudo bash napcat.sh
 </code></pre>
-<h2 id="使用安装包下载NapCat"><a href="#使用安装包下载NapCat" class="headerlink" title="使用安装包下载NapCat"></a>使用安装包下载NapCat</h2><pre><code class="bash">#安装NapCat的安装包，其他版本前往https://github.com/NapNeko/NapCatQQ/releases查看
-wget -O napcat.zip https://github.com/NapNeko/NapCatQQ/releases/download/v1.6.7/NapCat.linux.x64.zip
-#安装太慢了可以本地挂梯子安装压缩包命名成napcat.zip然后扔到服务器里
-
-sudo apt update
-
-#下载解压工具
-sudo apt install unzip
-
-#创建临时目录
-mkdir -p temp_unzip
-
-#解压缩文件到临时目录
-unzip napcat.zip -d temp_unzip
-
-mkdir -p NapCat
-
-#将内容移动到目标目录
-mv temp_unzip/NapCat.linux.x64/* NapCat/
-
-#删除临时目录
-rm -r temp_unzip
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre><code class="bash">sudo apt install libgbm1 libasound2
 </code></pre>
-<h2 id="启动NapCat"><a href="#启动NapCat" class="headerlink" title="启动NapCat"></a>启动NapCat</h2><pre><code class="bash">bash ./NapCat/napcat.sh
+<pre><code class="bash">sudo apt install ./linuxqq_3.2.7-23361_amd64.deb -y  #这里以3.2.7版本为例，且系统是ubuntu系统
+</code></pre>
+<pre><code class="bash">apt --fix-broken install
+</code></pre>
+<h2 id="启动NapCat"><a href="#启动NapCat" class="headerlink" title="启动NapCat"></a>启动NapCat</h2><pre><code class="bash">#前台启动，推荐使用screen创建窗口前台启动
+xvfb-run qq --no-sandbox
+</code></pre>
+<pre><code class="bash">#后台启动
+nohup xvfb-run qq --no-sandbox &gt; nul 2&gt; nul &amp;
+#使用后台启动需要使用exit退出服务器
 </code></pre>
 <p>如果你已经成功登录过官方 QQ 或者 NapCatQQ，可以加参数 -q &lt;你的QQ&gt; 进行快速登录而无需扫码，如 </p>
-<pre><code class="bash">bash ./NapCat/napcat.sh -q 1234567
+<pre><code class="bash">xvfb-run qq --no-sandbox -q 1234567
+</code></pre>
+<h4 id="screen相关"><a href="#screen相关" class="headerlink" title="screen相关"></a>screen相关</h4><pre><code class="bash">#安装
+apt install screen
+#创建窗口
+screen -S （名称）
+#退出后重新连接窗口
+screen -xr （名称）
 </code></pre>
 <hr>
 <hr>
