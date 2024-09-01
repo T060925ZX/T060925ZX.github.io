@@ -17,7 +17,7 @@ if [[ $(basename "$PWD") == "Miao-Yunzai" ]]; then
         
         echo "少女正在下载版本文件"
         # 下载新的 device.js
-        curl -o ./node_modules/icqq/lib/core/device.js https://raw.githubusercontent.com/T060925ZX/ver/main/device.js
+        curl -o ./node_modules/icqq/lib/core/device.js https://www.iloli.work/js/device.js
 
         if [[ $? -eq 0 ]]; then
             echo "下载成功"
@@ -45,7 +45,7 @@ if [[ $(basename "$PWD") == "Miao-Yunzai" ]]; then
     sed -i "s|resend:.*|resend: false|g" ./config/config/bot.yaml
     sed -i "s|sendmsg_error:.*|sendmsg_error: false|g" ./config/config/bot.yaml
     sed -i "s|restart_port:.*|restart_port: 27881|g" ./config/config/bot.yaml
-    sed -i "s|sign_api_addr:.*|sign_api_addr: https://hlhs-nb.cn/signed/?key=114514\&ver=9.0.70|g" ./config/config/bot.yaml
+    sed -i "s|sign_api_addr:.*|sign_api_addr: https://hlhs-nb.cn/signed/?key=114514\&ver=9.0.90|g" ./config/config/bot.yaml
 
     echo "签名修改成功..."
 else
